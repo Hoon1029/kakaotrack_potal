@@ -3,12 +3,14 @@ package kr.ac.jejunu.user;
 import org.junit.jupiter.api.Test;
 import org.hamcrest.Matcher;
 
+import java.sql.SQLException;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
 public class userDaoTest {
     @Test
-    public void get() {
+    public void get() throws SQLException, ClassNotFoundException {
         UserDao userDao = new UserDao();
         Integer id = 1;
         String name = "hoon";

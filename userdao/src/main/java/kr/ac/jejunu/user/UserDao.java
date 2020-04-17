@@ -2,7 +2,7 @@ package kr.ac.jejunu.user;
 
 import java.sql.*;
 
-public class UserDao {
+abstract public class UserDao {
     public User get(Integer id) throws ClassNotFoundException, SQLException {
         //mysql
         //driver 로딩
@@ -55,4 +55,6 @@ public class UserDao {
         connection.close();
         //결과리턴
     }
+
+    abstract public Connection getConnection() throws ClassNotFoundException, SQLException;
 }

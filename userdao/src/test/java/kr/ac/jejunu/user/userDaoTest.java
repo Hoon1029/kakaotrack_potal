@@ -1,9 +1,7 @@
 package kr.ac.jejunu.user;
 
 import org.junit.jupiter.api.Test;
-import org.hamcrest.Matcher;
 
-import java.sql.Connection;
 import java.sql.SQLException;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -14,8 +12,9 @@ public class userDaoTest {
     @Test
     public void get() throws SQLException, ClassNotFoundException {
 
-        ConnectionMaker connectionMaker = new JenuConnectionMaker();
-        UserDao userDao = new UserDao(connectionMaker);
+        DaoFactory daoFactory = new DaoFactory();
+        UserDao userDao = daoFactory.getUserDao();
+
         Integer id = 1;
         String name = "hoon";
         String password = "1234";
@@ -34,8 +33,8 @@ public class userDaoTest {
         user.setName(name);
         user.setPassword(password);
 
-        ConnectionMaker connectionMaker = new JenuConnectionMaker();
-        UserDao userDao = new UserDao(connectionMaker);
+        DaoFactory daoFactory = new DaoFactory();
+        UserDao userDao = daoFactory.getUserDao();
 
         userDao.insert(user);
         assertThat(user.getId(), greaterThan(0));

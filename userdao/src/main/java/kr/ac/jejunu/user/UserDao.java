@@ -8,8 +8,7 @@ abstract public class UserDao {
         //driver 로딩
         Class.forName("com.mysql.cj.jdbc.Driver");
         //connection
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/kakao_potal?serverTimezone=Asia/Seoul",
-                "root", "1234");
+        Connection connection = getConnection();
         //query
         PreparedStatement preparedStatement =
                 connection.prepareStatement("select id, name, password from user_infor where id = ?");
@@ -35,8 +34,7 @@ abstract public class UserDao {
         //driver 로딩
         Class.forName("com.mysql.cj.jdbc.Driver");
         //connection
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/kakao_potal?serverTimezone=Asia/Seoul",
-                "root", "1234");
+        Connection connection =  getConnection();
         //query
         PreparedStatement preparedStatement =
                 connection.prepareStatement("insert into user_infor (name, password) values (?, ?)", Statement.RETURN_GENERATED_KEYS);

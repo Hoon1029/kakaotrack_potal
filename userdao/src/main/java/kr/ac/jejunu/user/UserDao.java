@@ -1,13 +1,14 @@
 package kr.ac.jejunu.user;
 
+import javax.sql.DataSource;
 import java.sql.*;
 
 public class UserDao {
 
-    private final ConnectionMaker connectionMaker;
+    private final DataSource dataSource;
 
-    public UserDao (ConnectionMaker connectionMaker){
-        this.connectionMaker = connectionMaker;
+    public UserDao (DataSource dataSource){
+        this.dataSource = dataSource;
     }
 
     public User get(Integer id) throws ClassNotFoundException, SQLException {
@@ -15,7 +16,7 @@ public class UserDao {
         //driver 로딩
         Class.forName("com.mysql.cj.jdbc.Driver");
         //connection
-        Connection connection = connectionMaker.getConnection();
+        Connection connection = dataSource.getConnection();
         //query
         PreparedStatement preparedStatement =
                 connection.prepareStatement("select id, name, password from user_infor where id = ?");
@@ -41,7 +42,7 @@ public class UserDao {
         //driver 로딩
         Class.forName("com.mysql.cj.jdbc.Driver");
         //connection
-        Connection connection = connectionMaker.getConnection();
+        Connection connection = dataSource.getConnection();
         //query
         PreparedStatement preparedStatement =
                 connection.prepareStatement("insert into user_infor (name, password) values (?, ?)", Statement.RETURN_GENERATED_KEYS);

@@ -1,4 +1,5 @@
 package kr.ac.jejunu.userdao;
+
 import org.hamcrest.core.IsNull;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -23,10 +24,10 @@ public class UserDaoTests {
     private static UserDao userDao;
 
     @BeforeAll
-    public static void setup(){
-    //  ApplicationContext applicationContext = new AnnotationConfigApplicationContext(DaoFactory.class);
-    //  ApplicationContext applicationContext = new ClassPathXmlApplicationContext("daoFactory.xml");
-    //  ApplicationContext applicationContext = new GenericGroovyApplicationContext("daoFactory.groovy");
+    public static void setup() {
+        //  ApplicationContext applicationContext = new AnnotationConfigApplicationContext(DaoFactory.class);
+        //  ApplicationContext applicationContext = new ClassPathXmlApplicationContext("daoFactory.xml");
+        //  ApplicationContext applicationContext = new GenericGroovyApplicationContext("daoFactory.groovy");
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext("kr.ac.jejunu.userdao");
         userDao = applicationContext.getBean("userDao", UserDao.class);
     }
@@ -40,7 +41,7 @@ public class UserDaoTests {
     }
 
     @Test
-    public void testInsert () throws SQLException, ClassNotFoundException {
+    public void testInsert() throws SQLException, ClassNotFoundException {
         User user = new User();
         user.setName(name);
         user.setPassword(password);

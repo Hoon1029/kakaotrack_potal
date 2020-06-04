@@ -5,6 +5,7 @@ import java.sql.*;
 
 public class JdbcContext {
     private final DataSource dataSource;
+
     public JdbcContext(DataSource dataSource) {
         this.dataSource = dataSource;
     }

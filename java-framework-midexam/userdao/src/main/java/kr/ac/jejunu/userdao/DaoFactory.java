@@ -40,7 +40,7 @@ public class DaoFactory {
             dataSource.setDriverClass((Class<? extends Driver>) Class.forName(className));
             dataSource.setUrl(url);
             dataSource.setUsername(username);
-        }catch(ClassNotFoundException e){
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
 

@@ -3,16 +3,16 @@ import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.jdbc.datasource.SimpleDriverDataSource
 
 beans {
-    dataSource(SimpleDriverDataSource){
+    dataSource(SimpleDriverDataSource) {
         driverClass = System.getenv("DB_CLASSNAME")
         url = System.getenv("DB_URL")
         username = System.getenv("DB_USERNAME")
         password = System.getenv("DB_PASSWORD")
     }
-    jdbcTemplate(JdbcTemplate, dataSource){
+    jdbcTemplate(JdbcTemplate, dataSource) {
 
     }
-    userDao(UserDao, jdbcTemplate){
+    userDao(UserDao, jdbcTemplate) {
 
     }
 

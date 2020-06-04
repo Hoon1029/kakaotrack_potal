@@ -6,12 +6,12 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class  User {
+public class User {
     private Integer id;
     private String name;
     private String password;
 
-    public User(String name, String password){
+    public User(String name, String password) {
         this.name = name;
         this.password = password;
     }

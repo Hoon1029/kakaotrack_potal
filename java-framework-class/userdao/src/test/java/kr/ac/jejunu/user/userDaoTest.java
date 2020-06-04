@@ -10,6 +10,7 @@ import org.springframework.context.support.GenericGroovyApplicationContext;
 import org.springframework.context.support.StaticApplicationContext;
 
 import java.sql.SQLException;
+import java.util.Collections;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.greaterThan;
@@ -24,20 +25,21 @@ public class userDaoTest {
     String password = "1234";
 
     @BeforeAll
-    public static void setup(){
-    //  ApplicationContext applicationContext = new AnnotationConfigApplicationContext(DaoFactory.class);
-    //  ApplicationContext applicationContext = new ClassPathXmlApplicationContext("daoFactory.xml");
-    //  ApplicationContext applicationContext = new GenericGroovyApplicationContext("daoFactory.groovy");
+    public static void setup() {
+        //  ApplicationContext applicationContext = new AnnotationConfigApplicationContext(DaoFactory.class);
+        //  ApplicationContext applicationContext = new ClassPathXmlApplicationContext("daoFactory.xml");
+        //  ApplicationContext applicationContext = new GenericGroovyApplicationContext("daoFactory.groovy");
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext("kr.ac.jejunu.user");
         userDao = applicationContext.getBean("userDao", UserDao.class);
     }
 
     @Test
     public void get() throws SQLException, ClassNotFoundException {
-        User user = userDao.get(id);
+        User user = userDao.get(24);
         assertThat(user.getId(), is(id));
         assertThat(user.getName(), is(name));
         assertThat(user.getPassword(), is(password));
+        System.out.println(user.getId());
     }
 
     @Test

@@ -22,7 +22,7 @@ public class DaoFactory {
     private String password;
 
     @Bean
-    public UserDao userDao(){
+    public UserDao userDao() {
         return new UserDao(jdbcContext());
     }
 
@@ -32,16 +32,16 @@ public class DaoFactory {
     }
 
     @Bean
-    public DataSource dataSource(){
-            SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
+    public DataSource dataSource() {
+        SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
         try {
             dataSource.setDriverClass((Class<? extends Driver>) Class.forName(className));
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         dataSource.setUrl(url);
-            dataSource.setUsername(username);
-            dataSource.setPassword(password);
-            return dataSource;
+        dataSource.setUsername(username);
+        dataSource.setPassword(password);
+        return dataSource;
     }
 }

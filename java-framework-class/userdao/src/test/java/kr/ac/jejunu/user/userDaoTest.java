@@ -35,7 +35,7 @@ public class userDaoTest {
 
     @Test
     public void get() throws SQLException, ClassNotFoundException {
-        User user = userDao.get(24);
+        User user = userDao.get(1);
         assertThat(user.getId(), is(id));
         assertThat(user.getName(), is(name));
         assertThat(user.getPassword(), is(password));

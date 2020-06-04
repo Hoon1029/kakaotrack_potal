@@ -1,11 +1,14 @@
 package kr.ac.jejunu.user;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 public class User {
     private Integer id;
     private String name;

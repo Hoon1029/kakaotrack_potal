@@ -13,8 +13,9 @@ public class UserDaoTests {
     String password = "1234";
 
     @Test
-    public void get() throws SQLException, ClassNotFoundException {
-        UserDao userDao = new UserDao();
+    public void get1() throws SQLException, ClassNotFoundException {
+        DaoFactory daoFactory = new DaoFactory();
+        UserDao userDao = daoFactory.getDao();
         User user = userDao.get(id);
         assertThat(user.getId(), is(id));
         assertThat(user.getName(), is(name));
@@ -27,7 +28,9 @@ public class UserDaoTests {
         user.setName(name);
         user.setPassword(password);
 
-        UserDao userDao = new UserDao();
+        DaoFactory daoFactory = new DaoFactory();
+        UserDao userDao = daoFactory.getDao();
+
         userDao.insert(user);
 
         User insertedUser = userDao.get(user.getId());

@@ -3,11 +3,10 @@ package ac.kr.jejunu.user;
 import java.sql.*;
 import java.sql.DriverManager;
 
-public class UserDao {
+abstract public class UserDao {
 
     public User get(Integer id) throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/kakao_potal?serverTimezone=Asia/Seoul", "root", "1234");
+        Connection connection = getConnection();
 
         PreparedStatement preparedStatement =
                 connection.prepareStatement("select id, name, password from user_infor where id = ?");
@@ -28,10 +27,9 @@ public class UserDao {
         return user;
     }
 
-    public void insert(User user) throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.cj.jdbc.Driver");
 
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/kakao_potal?serverTimezone=Asia/Seoul", "root", "1234");
+    public void insert(User user) throws ClassNotFoundException, SQLException {
+        Connection connection = getConnection();
 
         PreparedStatement preparedStatement = connection.prepareStatement("insert into user_infor (name, password) values (?, ?)", Statement.RETURN_GENERATED_KEYS);
         preparedStatement.setString(1, user.getName());
@@ -46,4 +44,7 @@ public class UserDao {
         preparedStatement.close();
         connection.close();
     }
+
+    abstract public Connection getConnection() throws ClassNotFoundException, SQLException ;
+
 }

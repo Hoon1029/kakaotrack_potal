@@ -54,5 +54,10 @@
         <beans:property name="maxUploadSize" value="200000000" />
         <beans:property name="maxInMemorySize" value="200000000" />
     </beans:bean>
-
+    <interceptors>
+        <interceptor>
+            <mapping path="/**/*"/>
+            <beans:bean class="kr.ac.jejunu.user.UserInterceptor"/>
+        </interceptor>
+    </interceptors>
 </beans:beans>

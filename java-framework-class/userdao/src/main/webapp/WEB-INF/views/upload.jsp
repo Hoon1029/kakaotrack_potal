@@ -7,5 +7,8 @@
     <input type="file" name="file"/>
     <input type="submit"/>
 </form>
+<script>
+    document.write("<img src=\"${url}\"/>");
+</script>
 <img src="${url}"/>
 </html>

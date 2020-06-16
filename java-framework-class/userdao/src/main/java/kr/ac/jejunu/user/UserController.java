@@ -24,14 +24,10 @@ public class UserController {
     public User getUser(@RequestParam("id") Integer id) { return userDao.get(id); }
 
     @RequestMapping("/exception")
-    public void exception(){
-        throw new RuntimeException("어이쿠!");
-    }
+    public void exception(){ throw new RuntimeException("어이쿠!"); }
 
     @RequestMapping(path ="/upload", method = RequestMethod.GET)
-    public void upload(){
-
-    }
+    public void upload(){ }
 
     @RequestMapping(path = "/upload", method = RequestMethod.POST)
     public ModelAndView upload(@RequestParam("file") MultipartFile file, HttpServletRequest request) throws IOException {
@@ -45,6 +41,18 @@ public class UserController {
         modelAndView.addObject("url", "/images/"+file.getOriginalFilename());
         return modelAndView;
     }
+
+    @RequestMapping(path = "/test", method = RequestMethod.GET)
+    public void test() throws IOException {
+        return;
+    }
+
+    @RequestMapping(path = "/test", method = RequestMethod.POST)
+    public void test(HttpServletRequest request) throws IOException {
+
+        return;
+    }
+
     @ExceptionHandler(Exception.class)
     public ModelAndView error(Exception e){
         ModelAndView modelAndView = new ModelAndView("error");

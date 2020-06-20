@@ -1,28 +1,15 @@
 package kr.ac.jejunu;
 
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-@Getter
-@Setter
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
     String id;
     String password;
     String name;
     boolean ownerFlag = false;
-
-    public User(){}
-
-    public User(String id, String password, String name, boolean ownerFlag) {
-        this.id = id;
-        this.password = password;
-        this.name = name;
-        this.ownerFlag = ownerFlag;
-    }
-
-
-
-
-
 }

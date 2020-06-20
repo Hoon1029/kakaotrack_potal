@@ -3,15 +3,21 @@ package kr.ac.jejunu;
 import java.sql.*;
 
 public class UserDao {
-    public User get(Integer code) throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/kakao_potal_card_platform?serverTimezone=Asia/Seoul", "root", "1234");
-        PreparedStatement preparedStatement = connection.prepareStatement("select code, id, password, name, owner_flag from user where code = ?");
-        preparedStatement.setInt(1, code);
+    private final ConnectionMaker connectionMaker;
+
+    public UserDao(ConnectionMaker connectionMaker){
+        this.connectionMaker = connectionMaker;
+    }
+
+    public User get(String id) throws ClassNotFoundException, SQLException {
+        Connection connection = connectionMaker.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement("select id, password, name, owner_flag from user where id = ?");
+        preparedStatement.setString(1, id);
         ResultSet resultSet = preparedStatement.executeQuery();
-        resultSet.next();
+        if(resultSet.next() == false){
+            return null;
+        }
         User user = new User();
-        user.setCode(resultSet.getInt("code"));
         user.setId(resultSet.getString("id"));
         user.setPassword(resultSet.getString("password"));
         user.setName(resultSet.getString("name"));
@@ -21,4 +27,18 @@ public class UserDao {
         connection.close();
         return user;
     }
+
+    public void insert(User user) throws ClassNotFoundException, SQLException {
+        Connection connection = connectionMaker.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement("insert into user (id, password, name, owner_flag) values(?, ?, ?, ?)");
+        preparedStatement.setString(1, user.getId());
+        preparedStatement.setString(2, user.getPassword());
+        preparedStatement.setString(3, user.getName());
+        preparedStatement.setBoolean(4, user.isOwnerFlag());
+        preparedStatement.executeUpdate();
+
+        preparedStatement.close();
+        connection.close();
+    }
+
 }

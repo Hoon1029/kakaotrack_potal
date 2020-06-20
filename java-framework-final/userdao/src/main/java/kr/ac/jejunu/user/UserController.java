@@ -22,7 +22,7 @@ import java.util.Map;
 public class UserController {
     private final UserDao userDao;
     @RequestMapping(path = "/user")
-    public User getUser(@RequestParam("id") Integer id) {
+    public User getUser(@RequestParam("id") String id) {
         return userDao.get(id);
     }
 

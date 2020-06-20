@@ -11,7 +11,7 @@ public class RestController {
     private final UserDao userDao;
 
     @GetMapping("/{id}")
-    public User get(@PathVariable("id") Integer id){
+    public User get(@PathVariable("id") String id){
         return userDao.get(id);
     }
 

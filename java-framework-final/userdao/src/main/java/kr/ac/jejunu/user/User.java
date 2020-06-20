@@ -10,9 +10,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class User {
-    private Integer id;
-    private String name;
+    private String id;
     private String password;
+    private String name;
+    private boolean ownerFlag;
 
     public User(String name, String password) {
         this.name = name;

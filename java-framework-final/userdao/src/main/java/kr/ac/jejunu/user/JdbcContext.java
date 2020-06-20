@@ -22,7 +22,7 @@ public class JdbcContext {
             if (resultSet.next()) {
 
                 user = new User();
-                user.setId(resultSet.getInt("id"));
+                user.setId(resultSet.getString("id"));
                 user.setName(resultSet.getString("name"));
                 user.setPassword(resultSet.getString("password"));
             }
@@ -59,7 +59,7 @@ public class JdbcContext {
             resultSet = preparedStatement.getGeneratedKeys();
             resultSet.next();
 
-            user.setId(resultSet.getInt(1));
+            user.setId(resultSet.getString(1));
         } finally {
             try {
                 resultSet.close();

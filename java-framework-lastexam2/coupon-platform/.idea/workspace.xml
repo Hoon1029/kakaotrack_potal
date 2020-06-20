@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b5a57bca-d645-4880-966a-a8fd5efad516" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileChanges/last-build.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileContent/fileContent.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/6.1.1/gc.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/vcs-1/gc.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/kr/ac/jejunu/ConnectionMaker.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/kr/ac/jejunu/DaoFactory.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/kr/ac/jejunu/JejuConnectionMaker.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/kr/ac/jejunu/User.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/kr/ac/jejunu/UserDao.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/test/kr/ac/jejunu/UserDaoTests.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/kr.ac.jejunu.UserDaoTests.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/reports/tests/test/css/base-style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/reports/tests/test/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/reports/tests/test/js/report.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/kr.ac.jejunu.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/test-results/test/TEST-kr.ac.jejunu.UserDaoTests.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kr/ac/jejunu/ConnectionMaker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kr/ac/jejunu/DaoFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kr/ac/jejunu/JejuConnectionMaker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kr/ac/jejunu/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/kr/ac/jejunu/UserDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/kr/ac/jejunu/UserDaoTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/.gradle/6.1.1/executionHistory/executionHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/.gradle/6.1.1/fileChanges/last-build.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/.gradle/6.1.1/fileContent/fileContent.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/.gradle/6.1.1/fileHashes/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/.gradle/6.1.1/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/.gradle/6.1.1/javaCompile/classAnalysis.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/.gradle/6.1.1/javaCompile/jarAnalysis.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/.gradle/checksums/checksums.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/.gradle/vcs-1/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/build/classes/java/main/kr/ac/jejunu/ConnectionMaker.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/build/classes/java/main/kr/ac/jejunu/DaoFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/build/classes/java/main/kr/ac/jejunu/JejuConnectionMaker.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/build/classes/java/main/kr/ac/jejunu/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/build/classes/java/main/kr/ac/jejunu/UserDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/build/classes/java/test/kr/ac/jejunu/UserDaoTests.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/build/reports/tests/test/classes/kr.ac.jejunu.UserDaoTests.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/build/reports/tests/test/css/base-style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/build/reports/tests/test/css/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/build/reports/tests/test/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/build/reports/tests/test/js/report.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/build/reports/tests/test/packages/kr.ac.jejunu.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/build/test-results/test/TEST-kr.ac.jejunu.UserDaoTests.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/build/test-results/test/binary/output.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/build/test-results/test/binary/output.bin.idx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/build/test-results/test/binary/results.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/src/main/java/kr/ac/jejunu/ConnectionMaker.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/src/main/java/kr/ac/jejunu/DaoFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/src/main/java/kr/ac/jejunu/JejuConnectionMaker.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/src/main/java/kr/ac/jejunu/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/src/main/java/kr/ac/jejunu/UserDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java-framework-lastexam/coupon-platform/src/test/java/kr/ac/jejunu/UserDaoTests.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1dbEQw8rnoofgE8slGyf3sHtZyX" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java" />
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="jejunu" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="M:\kakao potal3\java-framework-lastexam2\coupon-platform\src\main\java" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Gradle.UserDaoTests.update">
+    <configuration name="UserDaoTests.delete" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="env">
+          <map>
+            <entry key="DB_CLASSNAME" value="com.mysql.cj.jdbc.Driver" />
+            <entry key="DB_PASSWORD" value="1234" />
+            <entry key="DB_URL" value="jdbc:mysql://localhost/kakao_potal_card_platform?serverTimezone=Asia/Seoul" />
+            <entry key="DB_USERNAME" value="root" />
+          </map>
+        </option>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;kr.ac.jejunu.UserDaoTests.delete&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="UserDaoTests.get" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="env">
+          <map>
+            <entry key="DB_CLASSNAME" value="com.mysql.cj.jdbc.Driver" />
+            <entry key="DB_PASSWORD" value="1234" />
+            <entry key="DB_URL" value="jdbc:mysql://localhost/kakao_potal_card_platform?serverTimezone=Asia/Seoul" />
+            <entry key="DB_USERNAME" value="root" />
+          </map>
+        </option>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;kr.ac.jejunu.UserDaoTests.get&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="UserDaoTests.insert" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="env">
+          <map>
+            <entry key="DB_CLASSNAME" value="com.mysql.cj.jdbc.Driver" />
+            <entry key="DB_PASSWORD" value="1234" />
+            <entry key="DB_URL" value="jdbc:mysql://localhost/kakao_potal_card_platform?serverTimezone=Asia/Seoul" />
+            <entry key="DB_USERNAME" value="root" />
+          </map>
+        </option>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;kr.ac.jejunu.UserDaoTests.insert&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="UserDaoTests.update" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="env">
+          <map>
+            <entry key="DB_CLASSNAME" value="com.mysql.cj.jdbc.Driver" />
+            <entry key="DB_PASSWORD" value="1234" />
+            <entry key="DB_URL" value="jdbc:mysql://localhost/kakao_potal_card_platform?serverTimezone=Asia/Seoul" />
+            <entry key="DB_USERNAME" value="root" />
+          </map>
+        </option>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;kr.ac.jejunu.UserDaoTests.update&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Gradle.UserDaoTests.get" />
+      <item itemvalue="Gradle.UserDaoTests.insert" />
+      <item itemvalue="Gradle.UserDaoTests.update" />
+      <item itemvalue="Gradle.UserDaoTests.delete" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.UserDaoTests.update" />
+        <item itemvalue="Gradle.UserDaoTests.insert" />
+        <item itemvalue="Gradle.UserDaoTests.delete" />
+        <item itemvalue="Gradle.UserDaoTests.get" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b5a57bca-d645-4880-966a-a8fd5efad516" name="Default Changelist" comment="" />
+      <created>1592685379949</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1592685379949</updated>
+      <workItem from="1592685382514" duration="417000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="734" y="90" key="#Project_Structure" timestamp="1592685520507">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="734" y="90" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1592685520507" />
+    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1592685799173">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1592685799173" />
+    <state x="1220" y="275" key="FileChooserDialogImpl" timestamp="1592685636457">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1220" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1592685636457" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1592685792080">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1592685792080" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1592685792080">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1592685792080" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1592685792080">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1592685792080" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1592685792080">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1592685792080" />
+    <state x="653" y="106" key="SettingsEditor" timestamp="1592685540034">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="653" y="106" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1592685540034" />
+  </component>
+</project>

@@ -51,4 +51,5 @@ public class UserDaoTests {
         System.out.println(user2.getName());
         System.out.println(user2.isOwnerFlag());
     }
+    //DB_CLASSNAME=com.mysql.cj.jdbc.Driver;DB_USERNAME=root;DB_URL=jdbc:mysql://localhost/kakao_potal_card_platform?serverTimezone=Asia/Seoul;DB_PASSWORD=1234
 }

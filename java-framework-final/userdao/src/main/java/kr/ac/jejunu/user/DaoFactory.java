@@ -1,5 +1,7 @@
 package kr.ac.jejunu.user;
 
+import kr.ac.jejunu.login.LoginInterceptor;
+import kr.ac.jejunu.login.UserManager;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -46,5 +48,10 @@ public class DaoFactory {
     }
 
     @Bean
-    public LoginManager loginManager(){ return new LoginManager(userDao());}
+    public UserManager loginManager(){ return new UserManager(userDao());}
+
+    @Bean
+    UserInterceptor userInterceptor(){ return new UserInterceptor(loginManager());}
+    @Bean
+    LoginInterceptor loginInterceptor(){ return new LoginInterceptor(loginManager());}
 }

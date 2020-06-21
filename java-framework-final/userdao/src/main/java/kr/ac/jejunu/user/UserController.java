@@ -1,32 +1,41 @@
 package kr.ac.jejunu.user;
 
+import kr.ac.jejunu.login.UserManager;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.java.Log;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Collections;
-import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
 public class UserController {
     private final UserDao userDao;
-    private final LoginManager loginManager;
+    private final UserManager userManager;
 
-    @RequestMapping(path = "/login")
-    public void login(){
+    @RequestMapping(path = "/*")
+    public void all(){
         return;
+    }
+
+    @RequestMapping(path = "/index")
+    public ModelAndView index(HttpServletRequest request){
+        ModelAndView modelAndView = new ModelAndView();;
+        if(userManager.isOnLogin(request)){
+            modelAndView.addObject("loginFlag", true);
+            modelAndView.addObject("user", userManager.getUser(request));
+        }
+        else{
+            modelAndView.addObject("loginFlag", false);
+        }
+        return modelAndView;
     }
 
     @RequestMapping(path = "/login_request")
@@ -36,19 +45,33 @@ public class UserController {
 
         ModelAndView modelAndView;
 
-        if(loginManager.isMember(user)) {
-            loginManager.login(user, request, session);
-            modelAndView = new ModelAndView("shop_list");
+        if(userManager.isMember(user)) {
+            userManager.login(user, request);
+            modelAndView = new ModelAndView("redirect:/customer/index");
         } else {
             modelAndView = new ModelAndView("login");
+            modelAndView.addObject("loginFlag", false);
             modelAndView.addObject("message", "It's invalid user infor");
         }
         return modelAndView;
     }
 
-    @RequestMapping(path = "/user")
-    public User getUser(@RequestParam("id") String id) {
-        return userDao.get(id);
+    @RequestMapping(path = "/join_request")
+    public ModelAndView join(HttpServletRequest request, HttpSession session){
+        User user = User.builder().id(request.getParameter("id"))
+                .password(request.getParameter("password"))
+                .name(request.getParameter("name")).build();
+
+        ModelAndView modelAndView = new ModelAndView("join");
+
+        if(userManager.isAlreadyExist(user)){
+            modelAndView.addObject("message", "It's already exist");
+        }else{
+            userManager.createUser(user);
+            modelAndView.addObject("message", "The join has been success");
+        }
+
+        return modelAndView;
     }
 
     @RequestMapping("/exception")
@@ -68,17 +91,6 @@ public class UserController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("url", "/images/"+file.getOriginalFilename());
         return modelAndView;
-    }
-
-    @RequestMapping(path = "/test", method = RequestMethod.GET)
-    public void test() throws IOException {
-        return;
-    }
-
-    @RequestMapping(path = "/test", method = RequestMethod.POST)
-    public void test(HttpServletRequest request) throws IOException {
-
-        return;
     }
 
     @ExceptionHandler(Exception.class)

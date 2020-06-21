@@ -1,5 +1,7 @@
 package kr.ac.jejunu.user;
 
+import kr.ac.jejunu.login.LoginInterceptor;
+import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
@@ -14,7 +16,13 @@ import java.util.List;
 @Configuration
 @EnableWebMvc
 @ComponentScan("kr.ac.jejunu.user")
+@ComponentScan("kr.ac.jejunu.customer")
+@ComponentScan("kr.ac.jejunu.owner")
+@AllArgsConstructor
 public class WebConfig implements WebMvcConfigurer {
+    private final UserInterceptor userInterceptor;
+    private final LoginInterceptor loginInterceptor;
+
     @Override
     public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
         configurer.mediaType("js", MediaType.APPLICATION_JSON)
@@ -23,7 +31,8 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new UserInterceptor()).addPathPatterns("/**/*");
+        registry.addInterceptor(userInterceptor).addPathPatterns("/**/*");
+        registry.addInterceptor(loginInterceptor).addPathPatterns("/login");
     }
 
     @Override

@@ -32,8 +32,8 @@ public class UserDao {
     }
 
     public void insert(User user) {
-        Object[] params = new Object[]{user.getName(), user.getPassword()};
-        String sql = "insert into user_infor (name, password) values (?, ?)";
+        Object[] params = new Object[]{user.getId(), user.getPassword(), user.getName(), user.isOwnerFlag()};
+        String sql = "insert into user (id, password, name, owner_flag) values (?, ?, ?, ?)";
         jdbcTemplate.update(sql, params);
 //        KeyHolder keyHolder = new GeneratedKeyHolder();
 

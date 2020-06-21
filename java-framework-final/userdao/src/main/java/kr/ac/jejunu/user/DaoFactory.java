@@ -44,4 +44,7 @@ public class DaoFactory {
         dataSource.setPassword(password);
         return dataSource;
     }
+
+    @Bean
+    public LoginManager loginManager(){ return new LoginManager(userDao());}
 }

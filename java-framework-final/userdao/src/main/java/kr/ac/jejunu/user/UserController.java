@@ -1,6 +1,7 @@
 package kr.ac.jejunu.user;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.java.Log;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +22,30 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class UserController {
     private final UserDao userDao;
+    private final LoginManager loginManager;
+
+    @RequestMapping(path = "/login")
+    public void login(){
+        return;
+    }
+
+    @RequestMapping(path = "/login_request")
+    public ModelAndView login(HttpServletRequest request, HttpSession session){
+        User user = User.builder().id(request.getParameter("id"))
+                .password(request.getParameter("password")).build();
+
+        ModelAndView modelAndView;
+
+        if(loginManager.isMember(user)) {
+            loginManager.login(user, request, session);
+            modelAndView = new ModelAndView("shop_list");
+        } else {
+            modelAndView = new ModelAndView("login");
+            modelAndView.addObject("message", "It's invalid user infor");
+        }
+        return modelAndView;
+    }
+
     @RequestMapping(path = "/user")
     public User getUser(@RequestParam("id") String id) {
         return userDao.get(id);
@@ -63,4 +88,3 @@ public class UserController {
         return modelAndView;
     }
 }
-

@@ -1,0 +1,92 @@
+drop table shop;
+drop table user;
+drop table shop_join;
+drop table card;
+drop table product;
+drop table card_own;
+
+create table SHOP(
+id int auto_increment,
+owner_id char(20) NOT NULL,
+name char(50) NOT NULL,
+address char(150) NOT NULL,
+locate_x double NOT NULL,
+locate_y double NOT NULL,
+primary key (id)
+);
+
+insert into shop (owner_id, name, address, locate_x, locate_y)
+values
+("yh123", "맘스터치", "제주 제주시 제주대학로 102 OOO", 100.0, 200.0),
+("yh123", "봄봄", "제주 제주시 제주대학로 102 OOO", 100.0, 200.0),
+("yh123", "메가커피", "제주 제주시 제주대학로 102 OOO", 100.0, 200.0),
+("yh123", "한솥", "제주 제주시 제주대학로 102 OOO", 100.0, 200.0),
+("yh123", "김밥천국", "제주 제주시 제주대학로 102 OOO", 100.0, 200.0),
+("yh123", "빽다방", "제주 제주시 제주대학로 102 OOO", 100.0, 200.0);
+
+create table USER(
+id char(20) NOT NULL,
+password char(20) NOT NULL,
+name char(20) NOT NULL,
+owner_flag bool default false,
+primary key(id)
+);
+
+insert into user (id, password, name, owner_flag)
+values
+("yh123", "1234", "허윤호", true),
+("mh123", "1234", "한명훈", false);
+
+create table shop_join(
+user_id char(20) NOT NULL,
+shop_id int NOT NULL,
+primary key (user_id, shop_id)
+);
+
+insert into shop_join (user_id, shop_id)
+values
+("mh123", 1),
+("mh123", 2);
+
+create table product(
+id int auto_increment,
+shop_id int NOT NULL,
+name char(30) NOT NULL,
+price int NOT NULL,
+sell bool default true,
+primary key(id)
+);
+
+insert into product (shop_id, name, price)
+values
+(1, "싸이버거", 3000),
+(1, "윤호버거", 5000),
+(2, "아이스 아메리카노", 1500);
+
+create table card (
+card_id int auto_increment,
+shop_id int NOT NULL,
+name char(20) default "쿠폰",
+product_id int NOT NULL,
+background_code char(30) default "default.png",
+stamp_id char(30) default "default.png",
+primary key(card_id)
+);
+
+insert into card (shop_id, product_id)
+values
+(1, 1),
+(2, 3);
+
+create table card_own (
+card_id int NOT NULL,
+user_id int NOT NULL,
+num int default 0,
+primary key(card_id, user_id)
+);
+
+insert into card_own (card_id, user_id)
+values
+(1, 2),
+(2, 2);
+

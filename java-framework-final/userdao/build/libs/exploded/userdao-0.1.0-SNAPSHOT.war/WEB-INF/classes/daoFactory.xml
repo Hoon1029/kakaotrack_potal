@@ -18,4 +18,7 @@
     <bean name="userDao" class="kr.ac.jejunu.user.UserDao">
         <constructor-arg ref="jdbcTemplate"/>
     </bean>
+    <bean name="shopDao" class="kr.ac.jejunu.user.ShopDao">
+        <constructor-arg ref="jdbcTemplate"/>
+    </bean>
 </beans>

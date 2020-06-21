@@ -29,6 +29,11 @@ public class DaoFactory {
     }
 
     @Bean
+    public ShopDao shopDao() {
+        return new ShopDao(jdbcContext());
+    }
+
+    @Bean
     public JdbcTemplate jdbcContext() {
         return new JdbcTemplate(dataSource());
     }

@@ -24,7 +24,7 @@ public class UserDao {
                 user.setId(rs.getString("id"));
                 user.setName(rs.getString("name"));
                 user.setPassword(rs.getString("password"));
-                user.setOwnerFlag(rs.getBoolean("owner_flag"));
+                user.setOwnerFlag(rs.getBoolean("ownerFlag"));
             }
             return user;
         });

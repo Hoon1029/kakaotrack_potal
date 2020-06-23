@@ -10,18 +10,18 @@ public class CouponInforDao {
 
     private final JdbcTemplate jdbcTemplate;
 
-    public ArrayList<CouponInfor> get(Integer id){
-        Object[] params = new Object[]{id};
-        String sql = "select id, shopId, name, projectId, backgroundId, stampId from coupon where id = ?";
+    public ArrayList<CouponInfor> getByShopId(Integer shopId){
+        Object[] params = new Object[]{shopId};
+        String sql = "select id, shopId, name, productId, backgroundId, stampId from couponInfor where id = ?";
         return jdbcTemplate.query(sql, params, rs -> {
             ArrayList<CouponInfor> couponInfors = new ArrayList<CouponInfor>();
             CouponInfor couponInfor = null;
-            if(rs.next()){
+            while(rs.next()){
                  couponInfor = CouponInfor.builder().id(rs.getInt("id"))
                         .shopId(rs.getInt("shopId"))
-                        .name(rs.getString("nema"))
+                        .name(rs.getString("name"))
                         .backgoundId(rs.getString("backgroundId"))
-                        .productId(rs.getInt("projectId"))
+                        .productId(rs.getInt("productId"))
                         .stampId(rs.getString("stampId")).build();
                  couponInfors.add(couponInfor);
             }
@@ -29,6 +29,22 @@ public class CouponInforDao {
         });
     }
 
+    public CouponInfor get(Integer id){
+        Object[] params = new Object[]{id};
+        String sql = "select id, shopId, name, productId, backgroundId, stampId from couponInfor where id = ?";
+        return jdbcTemplate.query(sql, params, rs -> {
+            CouponInfor couponInfor = null;
+            if (rs.next()) {
+                couponInfor = CouponInfor.builder().id(rs.getInt("id"))
+                        .shopId(rs.getInt("shopId"))
+                        .name(rs.getString("name"))
+                        .backgoundId(rs.getString("backgroundId"))
+                        .productId(rs.getInt("productId"))
+                        .stampId(rs.getString("stampId")).build();
+            }
+            return couponInfor;
+        });
+    }
 //
 //    public ArrayList<Shop> getJoinedShop(String user_id) {
 //        Object[] params = new Object[]{user_id};

@@ -13,7 +13,7 @@
     <script>
         var shops = ${shopsJson};
         for(var i=0 ; i<shops.length ; i++){
-            document.write("<div><a href=\"/couponList/"+shops[i].id+"\">"+shops[i].name+"</a></div>")
+            document.write("<div><a href=\"/customer/couponList/"+shops[i].id+"\">"+shops[i].name+"</a></div>")
         }
 
     </script>

@@ -1,7 +1,9 @@
 package kr.ac.jejunu.user;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import kr.ac.jejunu.login.LoginInterceptor;
 import kr.ac.jejunu.login.UserManager;
+import lombok.Builder;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -40,8 +42,16 @@ public class DaoFactory {
 
     @Bean
     public CouponDao couponDao(){
-        return new CouponDao(jdbcContext());
+        return new CouponDao(jdbcContext(), couponInforDao(), productDao());
     }
+
+    @Bean
+    public ObjectMapper objectMapper(){
+        return new ObjectMapper();
+    }
+
+    @Bean
+    ProductDao productDao(){ return new ProductDao(jdbcContext()); }
 
     @Bean
     public JdbcTemplate jdbcContext() {

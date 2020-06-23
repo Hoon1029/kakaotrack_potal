@@ -21,11 +21,11 @@ public class ShopDao {
             if (rs.next()) {
                 shop = new Shop();
                 shop.setId(rs.getInt("id"));
-                shop.setOwnerId(rs.getString("owner_id"));
+                shop.setOwnerId(rs.getString("ownerId"));
                 shop.setName(rs.getString("name"));
                 shop.setAddress(rs.getString("address"));
-                shop.setLocateX(rs.getDouble("locate_x"));
-                shop.setLocateY(rs.getDouble("locate_y"));
+                shop.setLocateX(rs.getDouble("locateX"));
+                shop.setLocateY(rs.getDouble("locateY"));
             }
             return shop;
         });
@@ -40,11 +40,11 @@ public class ShopDao {
             while (rs.next()) {
                 shop = new Shop();
                 shop.setId(rs.getInt("id"));
-                shop.setOwnerId(rs.getString("owner_id"));
+                shop.setOwnerId(rs.getString("ownerId"));
                 shop.setName(rs.getString("name"));
                 shop.setAddress(rs.getString("address"));
-                shop.setLocateX(rs.getDouble("locate_x"));
-                shop.setLocateY(rs.getDouble("locate_y"));
+                shop.setLocateX(rs.getDouble("locateX"));
+                shop.setLocateY(rs.getDouble("locateY"));
                 if( shops == null)
                     shops = new ArrayList<Shop>();
                 shops.add(shop);

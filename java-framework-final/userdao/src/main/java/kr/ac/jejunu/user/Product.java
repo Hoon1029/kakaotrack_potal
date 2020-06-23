@@ -5,12 +5,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Data
-public class Coupon{
-    Integer couponInforId;
-    String userId;
-    Integer num;
+public class Product {
+    Integer id;
+    Integer shopId;
+    String name;
+    Integer price;
+    Boolean sellFlag;
 }

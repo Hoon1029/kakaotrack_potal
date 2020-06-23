@@ -6,13 +6,17 @@ import org.springframework.jdbc.core.JdbcTemplate;
 @AllArgsConstructor
 public class CouponDao {
     private final JdbcTemplate jdbcTemplate;
+    private final CouponInforDao couponInforDao;
+    private final ProductDao productDao;
 
     public Coupon get(Integer couponId, String userId){
         Object[] params = new Object[]{couponId, userId};
-        String sql = "select couponInforId, userId, num from coupon where couponId = ? and userId = ?";
+        String sql = "select couponInforId, userId, num from coupon where couponInforId = ? and userId = ?";
         return jdbcTemplate.query(sql, params, rs -> {
             Coupon coupon = null;
+            CouponInfor couponInfor = null;
             if(rs.next()){
+                couponInfor = couponInforDao.get(couponId);
                 coupon = Coupon.builder()
                         .couponInforId(rs.getInt("couponInforId"))
                         .userId(rs.getString("userId"))

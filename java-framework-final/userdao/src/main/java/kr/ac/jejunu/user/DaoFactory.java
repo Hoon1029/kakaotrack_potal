@@ -34,6 +34,16 @@ public class DaoFactory {
     }
 
     @Bean
+    public CouponInforDao couponInforDao() {
+        return new CouponInforDao(jdbcContext());
+    }
+
+    @Bean
+    public CouponDao couponDao(){
+        return new CouponDao(jdbcContext());
+    }
+
+    @Bean
     public JdbcTemplate jdbcContext() {
         return new JdbcTemplate(dataSource());
     }

@@ -6,10 +6,7 @@ import kr.ac.jejunu.login.UserManager;
 import kr.ac.jejunu.user.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -29,8 +26,9 @@ public class CustomerController {
     private final UserDao userDao;
     private final ShopDao shopDao;
     private final UserManager userManager;
+    private final CouponInforDao couponInforDao;
 
-    @RequestMapping(path = "/index")
+    @RequestMapping(path = "/shopList")
     public ModelAndView index(HttpServletRequest request) throws JsonProcessingException {
         ModelAndView modelAndView = new ModelAndView();;
         if(userManager.isOnLogin(request)){
@@ -41,13 +39,17 @@ public class CustomerController {
             modelAndView.addObject("loginFlag", true);
             modelAndView.addObject("user", userManager.getUser(request));
             modelAndView.addObject("shopsJson", shopsJson);
-
-
-
         }
         else{
             modelAndView.addObject("loginFlag", false);
         }
         return modelAndView;
     }
+
+//    @GetMapping("/couponList/{shopId}")
+//    public ModelAndView couponList(@PathVariable("shopId") Integer shopId, HttpServletRequest request){
+//        String userId = userManager.getUser(request).getId();
+//
+//        ModelAndView modelAndView = new ModelAndView("couponList");
+//    }
 }

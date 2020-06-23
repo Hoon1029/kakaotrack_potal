@@ -47,7 +47,7 @@ public class UserController {
 
         if(userManager.isMember(user)) {
             userManager.login(user, request);
-            modelAndView = new ModelAndView("redirect:/customer/index");
+            modelAndView = new ModelAndView("redirect:/customer/shopList");
         } else {
             modelAndView = new ModelAndView("login");
             modelAndView.addObject("loginFlag", false);

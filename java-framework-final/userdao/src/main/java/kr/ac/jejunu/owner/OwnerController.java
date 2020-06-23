@@ -27,7 +27,7 @@ public class OwnerController {
     private final UserDao userDao;
     private final UserManager userManager;
 
-    @RequestMapping(path = "/index")
+    @RequestMapping(path = "/shopList")
     public ModelAndView index(HttpServletRequest request){
         ModelAndView modelAndView = new ModelAndView();;
         if(userManager.isOnLogin(request)){

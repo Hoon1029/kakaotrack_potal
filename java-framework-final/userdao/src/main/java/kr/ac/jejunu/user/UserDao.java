@@ -16,7 +16,7 @@ public class UserDao {
 
     public User get(String id) {
         Object[] params = new Object[]{id};
-        String sql = "select id, password, name, owner_flag from user where id = ?";
+        String sql = "select id, password, name, ownerFlag from user where id = ?";
         return jdbcTemplate.query(sql, params, rs -> {
             User user = null;
             if (rs.next()) {
@@ -33,7 +33,8 @@ public class UserDao {
 
     public void insert(User user) {
         Object[] params = new Object[]{user.getId(), user.getPassword(), user.getName(), user.isOwnerFlag()};
-        String sql = "insert into user (id, password, name, owner_flag) values (?, ?, ?, ?)";
+        String sql = "insert into user (id, password, name, ownerFlag) values (?, ?, ?, ?)";
+
         jdbcTemplate.update(sql, params);
 //        KeyHolder keyHolder = new GeneratedKeyHolder();
 
@@ -49,7 +50,7 @@ public class UserDao {
 
     public void update(User user) {
         Object[] params = new Object[]{user.getName(), user.getPassword(), user.getId()};
-        String sql = "update user set password = ?, name = ?, owner_flag = ? where id = ?";
+        String sql = "update user set password = ?, name = ?, ownerFlag = ? where id = ?";
         jdbcTemplate.update(sql, params);
     }
 

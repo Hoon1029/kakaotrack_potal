@@ -3,21 +3,19 @@ package kr.ac.jejunu.user;
 import java.sql.*;
 import java.util.ArrayList;
 
+import lombok.AllArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
+@AllArgsConstructor
 public class ShopDao {
 
     private final JdbcTemplate jdbcTemplate;
 
-    public ShopDao(JdbcTemplate jdbcContext) {
-        this.jdbcTemplate = jdbcContext;
-    }
-
     public Shop get(Integer id){
         Object[] params = new Object[]{id};
-        String sql = "select id, owner_id, name, address, locate_x, locate_y from shop where id = ?";
+        String sql = "select id, ownerId, name, address, locateX, locateY from shop where id = ?";
         return jdbcTemplate.query(sql, params, rs -> {
             Shop shop = null;
             if (rs.next()) {
@@ -35,7 +33,7 @@ public class ShopDao {
 
     public ArrayList<Shop> getJoinedShop(String user_id) {
         Object[] params = new Object[]{user_id};
-        String sql = "select * from shop where id in (select shop_id from shop_join where user_id = ?)";
+        String sql = "select * from shop where id in (select shopId from enroll where userId = ?)";
         return jdbcTemplate.query(sql, params, rs -> {
             ArrayList<Shop> shops = null;
             Shop shop = null;
@@ -57,7 +55,7 @@ public class ShopDao {
 
     public void insert(Shop shop) {
         Object[] params = new Object[]{shop.getId(), shop.getOwnerId(), shop.getName(), shop.getAddress(), shop.getLocateX(), shop.getLocateY()};
-        String sql = "insert into shop (owner_id, name, address, locate_x, locate_y) values (?, ?, ?, ?, ?, ?)";
+        String sql = "insert into shop (ownerId, name, address, locateX, locateY) values (?, ?, ?, ?, ?, ?)";
 //        jdbcTemplate.update(sql, params);
         KeyHolder keyHolder = new GeneratedKeyHolder();
         jdbcTemplate.update(con -> {
@@ -72,7 +70,7 @@ public class ShopDao {
 
     public void update(Shop shop) {
         Object[] params = new Object[]{shop.getName(), shop.getAddress(), shop.getLocateX(), shop.getLocateY(), shop.getOwnerId()};
-        String sql = "update shop set owner_id = ?, name = ?, address = ?, locate_x = ?, locate_y = ? where id = ?";
+        String sql = "update shop set ownerId = ?, name = ?, address = ?, locateX = ?, locateY = ? where id = ?";
         jdbcTemplate.update(sql, params);
     }
 

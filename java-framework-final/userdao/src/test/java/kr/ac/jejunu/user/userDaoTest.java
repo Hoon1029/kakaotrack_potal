@@ -1,7 +1,7 @@
 package kr.ac.jejunu.user;
 
-import kr.ac.jejunu.database.User;
-import kr.ac.jejunu.database.UserDao;
+import kr.ac.jejunu.database.object.User;
+import kr.ac.jejunu.database.dao.UserDao;
 import org.hamcrest.core.IsNull;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;

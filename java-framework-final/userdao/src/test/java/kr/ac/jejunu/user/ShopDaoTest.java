@@ -1,7 +1,7 @@
 package kr.ac.jejunu.user;
 
-import kr.ac.jejunu.database.Shop;
-import kr.ac.jejunu.database.ShopDao;
+import kr.ac.jejunu.database.object.Shop;
+import kr.ac.jejunu.database.dao.ShopDao;
 import lombok.AllArgsConstructor;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;

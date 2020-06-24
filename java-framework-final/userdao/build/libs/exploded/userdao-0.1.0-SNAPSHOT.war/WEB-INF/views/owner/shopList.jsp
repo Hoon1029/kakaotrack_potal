@@ -1,6 +1,15 @@
 <%@page contentType="text/html; charset=UTF-8" %>
 <html>
-<style></style>
+<style>
+    * {
+        background-color: black;
+        color: white
+    }
+    input {
+        background-color: white;
+        color: black;
+    }
+</style>
 <head></head>
 <body>
     <a href = "/customer/shopList">customer</a>
@@ -16,11 +25,14 @@
         }
         for(var i=0 ; i<shops.length ; i++){
             var value = shops[i].name;
-            var url = "\"/owner/couponList/{"+shops[i].id+"}/\""
+            var url = "\"/owner/shop/"+shops[i].id+"\""
             document.write("<div>매장"+(i+1)+": <a href=" + url + ">" + value + "</a></div>");
         }
     </script>
-    <h3>매장 추가하기</h3>
+    <details>
+        <summary>매장 추가하기</summary>
+    </details>
+    <h3></h3>
     <form action="/owner/createShop" method="post" enctype="multipart/form-data">
         <div>
             <div>

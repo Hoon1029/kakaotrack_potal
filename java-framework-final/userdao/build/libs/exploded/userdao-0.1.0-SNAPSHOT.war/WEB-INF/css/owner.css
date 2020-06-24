@@ -1,0 +1,27 @@
+* {
+    background-color: black;
+    color: white
+}
+input {
+    background-color: white;
+    color: black;
+}
+details {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+summary {
+
+}
+summary.details1 {
+    font-size : 25px;
+    background-color: black;
+    color : white;
+}
+summary.details2 {
+    font-size : 15px;
+}
+
+.details2_content {
+    margin-left: 20px;
+}

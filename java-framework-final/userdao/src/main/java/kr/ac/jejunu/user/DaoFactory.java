@@ -1,7 +1,7 @@
 package kr.ac.jejunu.user;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import kr.ac.jejunu.database.*;
+import kr.ac.jejunu.database.dao.*;
 import kr.ac.jejunu.login.LoginInterceptor;
 import kr.ac.jejunu.login.UserManager;
 import org.springframework.beans.factory.annotation.Value;

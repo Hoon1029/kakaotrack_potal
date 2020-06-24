@@ -1,6 +1,6 @@
 package kr.ac.jejunu.user;
 
-import kr.ac.jejunu.database.User;
+import kr.ac.jejunu.database.object.User;
 import kr.ac.jejunu.login.UserManager;
 import lombok.AllArgsConstructor;
 import org.junit.jupiter.api.Test;

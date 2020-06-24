@@ -2,7 +2,8 @@ package kr.ac.jejunu.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import kr.ac.jejunu.database.*;
+import kr.ac.jejunu.database.dao.*;
+import kr.ac.jejunu.database.object.*;
 import kr.ac.jejunu.login.UserManager;
 import lombok.*;
 import org.springframework.stereotype.Controller;

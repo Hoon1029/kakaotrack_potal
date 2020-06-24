@@ -1,4 +1,4 @@
-import kr.ac.jejunu.database.UserDao
+import kr.ac.jejunu.database.dao.UserDao
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.jdbc.datasource.SimpleDriverDataSource
 

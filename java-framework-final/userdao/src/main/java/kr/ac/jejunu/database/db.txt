@@ -1,0 +1,102 @@
+drop table shop;
+drop table user;
+drop table enroll;
+drop table couponInfor;
+drop table product;
+drop table coupon;
+
+create table SHOP(
+id int auto_increment,
+ownerId int NOT NULL,
+name char(50) NOT NULL,
+address char(150) NOT NULL,
+locateX double NOT NULL,
+locateY double NOT NULL,
+primary key (id)
+);
+
+insert into shop (ownerId, name, address, locateX, locateY)
+values
+(1, "맘스터치", "제주 제주시 제주대학로 102 OOO", 100.0, 200.0),
+(1, "봄봄", "제주 제주시 제주대학로 102 OOO", 100.0, 200.0),
+(1, "메가커피", "제주 제주시 제주대학로 102 OOO", 100.0, 200.0),
+(1, "한솥", "제주 제주시 제주대학로 102 OOO", 100.0, 200.0),
+(1, "김밥천국", "제주 제주시 제주대학로 102 OOO", 100.0, 200.0),
+(1, "빽다방", "제주 제주시 제주대학로 102 OOO", 100.0, 200.0);
+
+create table USER(
+id char(20) NOT NULL,
+password char(20) NOT NULL,
+name char(20) NOT NULL,
+ownerFlag bool default false,
+primary key(id)
+);
+
+insert into user (id, password, name, ownerFlag)
+values
+("yh123", "1234", "허윤호", true),
+("mh123", "1234", "한명훈", false);
+
+create table enroll(
+userId char(20) NOT NULL,
+shopId int NOT NULL,
+primary key (userId, shopId)
+);
+
+insert into enroll (userId, shopId)
+values
+("mh123", 1),
+("mh123", 2);
+
+create table product(
+id int auto_increment,
+shopId int NOT NULL,
+name char(30) NOT NULL,
+price int NOT NULL,
+sellFlag bool default true,
+primary key(id)
+);
+
+insert into product (shopId, name, price)
+values
+(1, "싸이버거", 3000),
+(1, "명훈버거", 4500),
+(1, "윤호버거", 5000),
+(1, "싸이버거세트", 6000),
+(2, "쿠키프라페", 3500),
+(2, "망고스무디", 4000),
+(2, "아이스 아메리카노", 1500);
+
+create table couponInfor (
+id int auto_increment,
+shopId int NOT NULL,
+name char(20) default "쿠폰",
+productId int NOT NULL,
+backgroundId char(30) default "default.png",
+stampId char(30) default "default.png",
+primary key(id)
+);
+
+insert into couponInfor (shopId, productId)
+values
+(1, 1),
+(1, 2),
+(1, 3),
+(1, 4),
+(2, 5),
+(2, 6);
+
+create table coupon (
+couponInforId int NOT NULL,
+userId char(20) NOT NULL,
+num int default 0,
+primary key(couponInforId, userId)
+);
+
+insert into coupon (couponInforId, userId)
+values
+(1, "mh123"),
+(2, "mh123"),
+(3, "mh123"),
+(5, "mh123"),
+(6, "mh123");

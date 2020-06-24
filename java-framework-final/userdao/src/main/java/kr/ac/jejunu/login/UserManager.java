@@ -1,7 +1,7 @@
 package kr.ac.jejunu.login;
 
-import kr.ac.jejunu.database.User;
-import kr.ac.jejunu.database.UserDao;
+import kr.ac.jejunu.database.object.User;
+import kr.ac.jejunu.database.dao.UserDao;
 import lombok.AllArgsConstructor;
 
 import javax.servlet.http.Cookie;

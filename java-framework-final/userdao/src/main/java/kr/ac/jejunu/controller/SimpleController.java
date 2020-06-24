@@ -1,7 +1,7 @@
 package kr.ac.jejunu.controller;
 
-import kr.ac.jejunu.database.User;
-import kr.ac.jejunu.database.UserDao;
+import kr.ac.jejunu.database.object.User;
+import kr.ac.jejunu.database.dao.UserDao;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;

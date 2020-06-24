@@ -2,7 +2,14 @@ package kr.ac.jejunu.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import kr.ac.jejunu.database.*;
+import kr.ac.jejunu.database.dao.CouponInforDao;
+import kr.ac.jejunu.database.dao.ProductDao;
+import kr.ac.jejunu.database.dao.ShopDao;
+import kr.ac.jejunu.database.dao.UserDao;
+import kr.ac.jejunu.database.object.CouponInfor;
+import kr.ac.jejunu.database.object.Product;
+import kr.ac.jejunu.database.object.Shop;
+import kr.ac.jejunu.database.object.User;
 import kr.ac.jejunu.login.UserManager;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +30,7 @@ public class OwnerController {
     private final ShopDao shopDao;
     private final ObjectMapper objectMapper;
     private final CouponInforDao couponInforDao;
+    private final ProductDao productDao;
 
     @RequestMapping(path = "/shopList")
     public ModelAndView index(HttpServletRequest request) throws JsonProcessingException {
@@ -46,14 +54,18 @@ public class OwnerController {
         return "redirect:/owner/shopList";
     }
 
-    @RequestMapping("/couponList/{shopId}")
-    public ModelAndView couponList(@PathVariable("shopId") Integer shopId){
-        @Data
-        class CouponData{
-            String couponName, productName;
-            Integer productPrice, couponInforId;
-        }
-        ArrayList<CouponInfor> couponInfors = couponInforDao.getByShopId(shopId);
-        return null;
+    @GetMapping("/shop/{shopId}")
+    public ModelAndView couponList(@PathVariable("shopId") Integer shopId) throws JsonProcessingException {
+//        @Data
+//        class CouponData{
+//            String couponName, productName;
+//            Integer productPrice, couponInforId;
+//        }
+//        ArrayList<CouponInfor> couponInfors = couponInforDao.getByShopId(shopId);
+
+        ArrayList<Product> products = productDao.getByShopId(shopId);
+        ModelAndView modelAndView = new ModelAndView("owner/shop");
+        modelAndView.addObject("productsJson", objectMapper.writeValueAsString(products));
+        return modelAndView;
     }
 }

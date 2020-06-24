@@ -7,8 +7,11 @@
 
 </head>
 <body>
-    <h1>Hello coupon world!!!</h1>
-
+<a href = "/owner/shopList">owner_mode</a>
+<a href = "/logout">logout</a>
+<hr>
+<h1>Welcome to "My coupon"</h1>
+<hr>
 
     <script>
         var shops = ${shopsJson};

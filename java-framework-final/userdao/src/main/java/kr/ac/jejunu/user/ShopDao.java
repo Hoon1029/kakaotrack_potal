@@ -31,8 +31,29 @@ public class ShopDao {
         });
     }
 
-    public ArrayList<Shop> getJoinedShop(String user_id) {
-        Object[] params = new Object[]{user_id};
+    public ArrayList<Shop> getByOwnerId(String ownerId){
+        Object[] params = new Object[]{ownerId};
+        System.out.println("id: "+ownerId);
+        String sql = "select id, ownerId, name, address, locateX, locateY from shop where ownerId = ?";
+        return jdbcTemplate.query(sql, params, rs -> {
+            ArrayList<Shop> shops = new ArrayList<Shop>();
+            Shop shop = null;
+            while (rs.next()) {
+                shop = new Shop();
+                shop.setId(rs.getInt("id"));
+                shop.setOwnerId(rs.getString("ownerId"));
+                shop.setName(rs.getString("name"));
+                shop.setAddress(rs.getString("address"));
+                shop.setLocateX(rs.getDouble("locateX"));
+                shop.setLocateY(rs.getDouble("locateY"));
+                shops.add(shop);
+            }
+            return shops;
+        });
+    }
+
+    public ArrayList<Shop> getByUserId(String userId) {
+        Object[] params = new Object[]{userId};
         String sql = "select * from shop where id in (select shopId from enroll where userId = ?)";
         return jdbcTemplate.query(sql, params, rs -> {
             ArrayList<Shop> shops = null;
@@ -54,8 +75,8 @@ public class ShopDao {
     }
 
     public void insert(Shop shop) {
-        Object[] params = new Object[]{shop.getId(), shop.getOwnerId(), shop.getName(), shop.getAddress(), shop.getLocateX(), shop.getLocateY()};
-        String sql = "insert into shop (ownerId, name, address, locateX, locateY) values (?, ?, ?, ?, ?, ?)";
+        Object[] params = new Object[]{shop.getOwnerId(), shop.getName(), shop.getAddress(), shop.getLocateX(), shop.getLocateY()};
+        String sql = "insert into shop (ownerId, name, address, locateX, locateY) values (?, ?, ?, ?, ?)";
 //        jdbcTemplate.update(sql, params);
         KeyHolder keyHolder = new GeneratedKeyHolder();
         jdbcTemplate.update(con -> {

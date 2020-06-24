@@ -93,6 +93,12 @@ public class UserController {
         return modelAndView;
     }
 
+    @RequestMapping("/logout")
+    public ModelAndView logout(HttpServletRequest request){
+        request.getSession().invalidate();
+        return new ModelAndView("login");
+    }
+
     @ExceptionHandler(Exception.class)
     public ModelAndView error(Exception e){
         ModelAndView modelAndView = new ModelAndView("error");

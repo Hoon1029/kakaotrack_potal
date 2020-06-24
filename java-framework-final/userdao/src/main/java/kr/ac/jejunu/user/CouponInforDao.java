@@ -12,7 +12,7 @@ public class CouponInforDao {
 
     public ArrayList<CouponInfor> getByShopId(Integer shopId){
         Object[] params = new Object[]{shopId};
-        String sql = "select id, shopId, name, productId, backgroundId, stampId from couponInfor where id = ?";
+        String sql = "select id, shopId, name, productId, backgroundId, stampId from couponInfor where shopId = ?";
         return jdbcTemplate.query(sql, params, rs -> {
             ArrayList<CouponInfor> couponInfors = new ArrayList<CouponInfor>();
             CouponInfor couponInfor = null;

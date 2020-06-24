@@ -1,5 +1,6 @@
 <%@page contentType="text/html; charset=UTF-8" %>
 <html>
+<h1>Welcome to "My coupon"</h1>
     <h1>로그인</h1>
 
     <a>${message}</a>

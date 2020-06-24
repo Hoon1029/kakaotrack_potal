@@ -1,14 +1,13 @@
 package kr.ac.jejunu.owner;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import kr.ac.jejunu.login.UserManager;
-import kr.ac.jejunu.user.User;
-import kr.ac.jejunu.user.UserDao;
+import kr.ac.jejunu.user.*;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -18,6 +17,7 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 
 @Controller
 @RequiredArgsConstructor
@@ -26,17 +26,40 @@ import java.io.IOException;
 public class OwnerController {
     private final UserDao userDao;
     private final UserManager userManager;
+    private final ShopDao shopDao;
+    private final ObjectMapper objectMapper;
+    private final CouponInforDao couponInforDao;
 
     @RequestMapping(path = "/shopList")
-    public ModelAndView index(HttpServletRequest request){
-        ModelAndView modelAndView = new ModelAndView();;
-        if(userManager.isOnLogin(request)){
-            modelAndView.addObject("loginFlag", true);
-            modelAndView.addObject("user", userManager.getUser(request));
-        }
-        else{
-            modelAndView.addObject("loginFlag", false);
-        }
+    public ModelAndView index(HttpServletRequest request) throws JsonProcessingException {
+        ModelAndView modelAndView = new ModelAndView("owner/shopList");;
+        User user = userManager.getUser(request);
+        ArrayList<Shop> shops = shopDao.getByOwnerId(user.getId());
+        modelAndView.addObject("shopsJson", objectMapper.writeValueAsString(shops));
         return modelAndView;
+    }
+
+    @RequestMapping(path = "/createShop" ,method = RequestMethod.POST)
+    public String createShop(HttpServletRequest request){
+        User user = userManager.getUser(request);
+        Shop shop = Shop.builder()
+                .ownerId(user.getId())
+                .name(request.getParameter("name"))
+                .address(request.getParameter("address"))
+                .locateX(Double.valueOf(request.getParameter("locateX")))
+                .locateY(Double.valueOf(request.getParameter("locateY"))).build();
+            shopDao.insert(shop);
+        return "redirect:/owner/shopList";
+    }
+
+    @RequestMapping("/couponList/{shopId}")
+    public ModelAndView couponList(@PathVariable("shopId") Integer shopId){
+        @Data
+        class CouponData{
+            String couponName, productName;
+            Integer productPrice, couponInforId;
+        }
+        ArrayList<CouponInfor> couponInfors = couponInforDao.getByShopId(shopId);
+        return null;
     }
 }

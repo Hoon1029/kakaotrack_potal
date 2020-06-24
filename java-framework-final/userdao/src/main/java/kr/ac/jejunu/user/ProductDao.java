@@ -18,7 +18,7 @@ public class ProductDao {
             if(rs.next()){
                 product = Product.builder()
                         .id(rs.getInt("id"))
-                        .shopId(rs.getInt("shipId"))
+                        .shopId(rs.getInt("shopId"))
                         .name(rs.getString("name"))
                         .price(rs.getInt("price"))
                         .sellFlag(rs.getBoolean("sellFlag")) .build();

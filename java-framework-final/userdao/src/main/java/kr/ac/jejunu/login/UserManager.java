@@ -1,13 +1,12 @@
 package kr.ac.jejunu.login;
 
-import kr.ac.jejunu.user.User;
-import kr.ac.jejunu.user.UserDao;
+import kr.ac.jejunu.database.User;
+import kr.ac.jejunu.database.UserDao;
 import lombok.AllArgsConstructor;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.awt.*;
 
 @AllArgsConstructor
 public class UserManager {

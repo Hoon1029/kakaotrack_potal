@@ -1,4 +1,4 @@
-import kr.ac.jejunu.user.UserDao
+import kr.ac.jejunu.database.UserDao
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.jdbc.datasource.SimpleDriverDataSource
 
@@ -15,5 +15,4 @@ beans {
     userDao(UserDao, jdbcTemplate) {
 
     }
-
 }

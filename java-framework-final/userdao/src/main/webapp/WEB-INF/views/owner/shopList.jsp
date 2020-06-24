@@ -20,17 +20,17 @@
             document.write("<div>매장"+(i+1)+": <a href=" + url + ">" + value + "</a></div>");
         }
     </script>
-</body>
-<h3>매장 추가하기</h3>
-<form action="/owner/createShop" method="post" enctype="multipart/form-data">
-    <div>
+    <h3>매장 추가하기</h3>
+    <form action="/owner/createShop" method="post" enctype="multipart/form-data">
         <div>
-            <div><a>매장 이름: </a><input type="text" name="name"/></div>
-            <div><a>매장 주소: </a><input type="text" name="address"/></div>
-            <div><a>X좌표: </a><input type="text" name="locateX"/></div>
-            <div><a>Y좌표: </a><input type="text" name="locateY"/></div>
+            <div>
+                <div><a>매장 이름: </a><input type="text" name="name"/></div>
+                <div><a>매장 주소: </a><input type="text" name="address"/></div>
+                <div><a>X좌표: </a><input type="text" name="locateX"/></div>
+                <div><a>Y좌표: </a><input type="text" name="locateY"/></div>
+            </div>
+            <div><input type="submit" value="등록하기"/></div>
         </div>
-        <div><input type="submit" value="등록하기"/></div>
-    </div>
-</form>
+    </form>
+</body>
 </html>

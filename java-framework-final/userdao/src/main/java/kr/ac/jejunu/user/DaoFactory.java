@@ -1,9 +1,9 @@
 package kr.ac.jejunu.user;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import kr.ac.jejunu.database.*;
 import kr.ac.jejunu.login.LoginInterceptor;
 import kr.ac.jejunu.login.UserManager;
-import lombok.Builder;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,22 +27,22 @@ public class DaoFactory {
 
     @Bean
     public UserDao userDao() {
-        return new UserDao(jdbcContext());
+        return new UserDao(jdbcTemplete());
     }
 
     @Bean
     public ShopDao shopDao() {
-        return new ShopDao(jdbcContext());
+        return new ShopDao(jdbcTemplete());
     }
 
     @Bean
     public CouponInforDao couponInforDao() {
-        return new CouponInforDao(jdbcContext());
+        return new CouponInforDao(jdbcTemplete());
     }
 
     @Bean
     public CouponDao couponDao(){
-        return new CouponDao(jdbcContext(), couponInforDao(), productDao());
+        return new CouponDao(jdbcTemplete(), couponInforDao(), productDao());
     }
 
     @Bean
@@ -51,10 +51,10 @@ public class DaoFactory {
     }
 
     @Bean
-    ProductDao productDao(){ return new ProductDao(jdbcContext()); }
+    ProductDao productDao(){ return new ProductDao(jdbcTemplete()); }
 
     @Bean
-    public JdbcTemplate jdbcContext() {
+    public JdbcTemplate jdbcTemplete() {
         return new JdbcTemplate(dataSource());
     }
 
@@ -76,7 +76,7 @@ public class DaoFactory {
     public UserManager loginManager(){ return new UserManager(userDao());}
 
     @Bean
-    UserInterceptor userInterceptor(){ return new UserInterceptor(loginManager());}
+    MainInterceptor userInterceptor(){ return new MainInterceptor(loginManager());}
     @Bean
     LoginInterceptor loginInterceptor(){ return new LoginInterceptor(loginManager());}
 }

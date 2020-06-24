@@ -16,11 +16,11 @@ import java.util.List;
 @Configuration
 @EnableWebMvc
 @ComponentScan("kr.ac.jejunu.user")
-@ComponentScan("kr.ac.jejunu.customer")
+@ComponentScan("kr.ac.jejunu.controller")
 @ComponentScan("kr.ac.jejunu.owner")
 @AllArgsConstructor
 public class WebConfig implements WebMvcConfigurer {
-    private final UserInterceptor userInterceptor;
+    private final MainInterceptor userInterceptor;
     private final LoginInterceptor loginInterceptor;
 
     @Override

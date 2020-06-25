@@ -5,7 +5,6 @@ import kr.ac.jejunu.database.dao.UserDao;
 import org.hamcrest.core.IsNull;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -82,5 +81,5 @@ public class userDaoTest {
         assertThat(deletedUser, IsNull.nullValue());
     }
 
-    // DB_PASSWORD=1234;DB_URL=jdbc:mysql://localhost/kakao_potal?serverTimezone=Asia/Seoul;DB_USERNAME=root;DB_CLASSNAME=com.mysql.cj.jdbc.Driver
+    // DB_PASSWORD=1234;DB_URL=jdbc:mysql://localhost/kakao_final?serverTimezone=Asia/Seoul;DB_USERNAME=root;DB_CLASSNAME=com.mysql.cj.jdbc.Driver
 }

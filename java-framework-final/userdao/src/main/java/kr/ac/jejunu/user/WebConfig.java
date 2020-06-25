@@ -15,7 +15,6 @@ import java.util.List;
 
 @Configuration
 @EnableWebMvc
-
 @ComponentScan("kr.ac.jejunu.controller")
 @ComponentScan("kr.ac.jejunu.database.dao")
 @ComponentScan("kr.ac.jejunu.database.object")

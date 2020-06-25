@@ -1,6 +1,7 @@
 package kr.ac.jejunu.database.dao;
 
 import kr.ac.jejunu.database.object.User;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 //@Component

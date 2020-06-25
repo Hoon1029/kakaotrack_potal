@@ -53,33 +53,11 @@ public class DaoFactory {
         transactionManager.setEntityManagerFactory(entityManagerFactory);
         return transactionManager;
     }
-//    @Bean
-//    public UserDao userDao() {
-//        return new UserDao(jdbcTemplete());
-//    }
-//
-//    @Bean
-//    public ShopDao shopDao() {
-//        return new ShopDao(jdbcTemplete());
-//    }
-//
-//    @Bean
-//    public CouponInforDao couponInforDao() {
-//        return new CouponInforDao(jdbcTemplete());
-//    }
-//
-//    @Bean
-//    public CouponDao couponDao(){
-//        return new CouponDao(jdbcTemplete(), couponInforDao(), productDao());
-//    }
 
     @Bean
     public ObjectMapper objectMapper(){
         return new ObjectMapper();
     }
-
-//    @Bean
-//    ProductDao productDao(){ return new ProductDao(jdbcTemplete()); }
 
     @Bean
     public JdbcTemplate jdbcTemplete() {
@@ -99,12 +77,4 @@ public class DaoFactory {
         dataSource.setPassword(password);
         return dataSource;
     }
-//
-//    @Bean
-//    public UserManager loginManager(){ return new UserManager(userDao());}
-//
-//    @Bean
-//    MainInterceptor userInterceptor(){ return new MainInterceptor(loginManager());}
-//    @Bean
-//    LoginInterceptor loginInterceptor(){ return new LoginInterceptor(loginManager());}
 }

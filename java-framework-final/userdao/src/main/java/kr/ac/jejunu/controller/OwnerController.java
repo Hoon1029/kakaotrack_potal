@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 @Controller
@@ -42,7 +43,8 @@ public class OwnerController {
     }
 
     @RequestMapping(path = "/createShop" ,method = RequestMethod.POST)
-    public String createShop(HttpServletRequest request){
+    public String createShop(HttpServletRequest request) throws UnsupportedEncodingException {
+        request.setCharacterEncoding("UTF-8");
         User user = userManager.getUser(request);
         Shop shop = Shop.builder()
                 .ownerId(user.getId())
@@ -66,7 +68,8 @@ public class OwnerController {
     }
 
     @PostMapping("/enrollProduct/{shopId}")
-    public String enrollProduct(@PathVariable("shopId") Integer shopId, HttpServletRequest request){
+    public String enrollProduct(@PathVariable("shopId") Integer shopId, HttpServletRequest request) throws UnsupportedEncodingException {
+        request.setCharacterEncoding("UTF-8");
         Product product = Product.builder()
                 .shopId(shopId)
                 .name(request.getParameter("name"))
@@ -78,7 +81,8 @@ public class OwnerController {
     }
 
     @PostMapping("/enrollCoupon/{shopId}")
-    public String enrollCoupon(@PathVariable("shopId") Integer shopId, HttpServletRequest request){
+    public String enrollCoupon(@PathVariable("shopId") Integer shopId, HttpServletRequest request) throws UnsupportedEncodingException {
+        request.setCharacterEncoding("UTF-8");
         CouponInfor couponInfor = CouponInfor.builder()
                 .shopId(shopId)
                 .name(request.getParameter("name"))

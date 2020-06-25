@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
@@ -86,7 +87,8 @@ public class CustomerController {
     }
 
     @RequestMapping("/enrollShop/{shopId}")
-    public String enrollShop(@PathVariable("shopId") Integer shopId, HttpServletRequest request){
+    public String enrollShop(@PathVariable("shopId") Integer shopId, HttpServletRequest request) throws UnsupportedEncodingException {
+
         if(userManager.isOnLogin(request)) {
             User user = userManager.getUser(request);
             enrollmentDao.insert(new Enrollment(shopId, user.getId()));

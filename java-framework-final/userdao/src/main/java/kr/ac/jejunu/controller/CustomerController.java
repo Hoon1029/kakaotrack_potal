@@ -107,5 +107,33 @@ public class CustomerController {
         return "redirect:/customer/shopList";
     }
 
+    @RequestMapping("dropCoupon/{couponInforId}")
+    public String dropCoupon(@PathVariable("couponInforId") Integer couponInforId, HttpServletRequest request){
+        System.out.println("couponInforId: "+couponInforId);
+        Integer shopId = couponInforDao.get(couponInforId).getShopId();
+        if(userManager.isOnLogin(request)) {
+            User user = userManager.getUser(request);
+            couponDao.delete(couponInforId, user.getId());
+        } else {
+
+        }
+        return "redirect:/customer/couponList/"+String.valueOf(shopId);
+    }
+
+    @RequestMapping("/enrollCoupon/{couponInforId}")
+    public String enrollCoupon(@PathVariable("couponInforId") Integer couponInforId, HttpServletRequest request){
+        Integer shopId = couponInforDao.get(couponInforId).getShopId();
+        if(userManager.isOnLogin(request)) {
+            User user = userManager.getUser(request);
+            Coupon coupon = Coupon.builder()
+                    .couponInforId(couponInforId)
+                    .customerId(user.getId())
+                    .num(0).build();
+            couponDao.insert(coupon);
+        } else {
+
+        }
+        return "redirect:/customer/couponList/"+String.valueOf(shopId);
+    }
 }
 

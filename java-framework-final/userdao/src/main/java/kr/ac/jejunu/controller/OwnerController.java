@@ -83,6 +83,7 @@ public class OwnerController {
                 .shopId(shopId)
                 .name(request.getParameter("name"))
                 .productId(Integer.valueOf(request.getParameter("productId")))
+                .maxStampNum(Integer.valueOf(request.getParameter("maxStampNum")))
                 .backgoundImgId("default.png")
                 .stampImgId("default.png").build();
         couponInforDao.insert(couponInfor);

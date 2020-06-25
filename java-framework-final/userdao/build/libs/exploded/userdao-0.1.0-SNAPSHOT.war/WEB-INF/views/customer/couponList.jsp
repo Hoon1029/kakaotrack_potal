@@ -22,7 +22,7 @@
     <h3>My Coupon List</h3>
     <script>
         if(enrolledCouponDatas.length == 0){
-            document.write("가입된 매장이 없습니다.");
+            document.write("등록된 쿠폰이 없습니다..");
         }else{
             document.write("<table>" +
                 "<tr bgcolor=white align=center>" +
@@ -34,7 +34,7 @@
                 "<td> 삭제하기 </td>" +
                 "</tr>");
             for(var i=0 ; i<enrolledCouponDatas.length ; i++){
-                var dropCouponUrl = "/customer/dropCouon/"+enrolledCouponDatas[i].couponInforId;
+                var dropCouponUrl = "/customer/dropCoupon/"+enrolledCouponDatas[i].couponInforId;
                 var value = "<tr id=\"shop\" align=center>" +
                     "<td>"+(i+1)+"</td>" +
                     "<td>"+enrolledCouponDatas[i].couponName+"</td>" +
@@ -55,7 +55,7 @@
             <form id = "couponEnrollmentTag" method="post" enctype="multipart/form-data">
                 <script>
                     if(unEnrolledCouponDatas.length == 0){
-                        document.write("가입된 매장이 없습니다.");
+                        document.write("등록할 쿠폰이 업습니다..");
                     }else{
                         document.write("<table>" +
                             "<tr bgcolor=white align=center>" +
@@ -67,14 +67,14 @@
                             "<td> 등록하기 </td>" +
                             "</tr>");
                         for(var i=0 ; i<unEnrolledCouponDatas.length ; i++){
-                            var withdrawalShopUrl = "/customer/enrollShop/"+unEnrolledCouponDatas[i].id;
-                            var value = "<tr id=\"shop\" align=center>" +
+                            var enrollCouponUrl = "/customer/enrollCoupon/"+unEnrolledCouponDatas[i].couponInforId;
+                            var value = "<tr align=center>" +
                                 "<td>"+(i+1)+"</td>" +
                                 "<td>"+unEnrolledCouponDatas[i].couponName+"</td>" +
                                 "<td>"+unEnrolledCouponDatas[i].productName+"</td>" +
                                 "<td>"+unEnrolledCouponDatas[i].productPrice+"</td>" +
                                 "<td>"+unEnrolledCouponDatas[i].maxStampNum+"</td>" +
-                                "<td><input type=\"button\" value = \"등록하기\" onClick=\"location.href=\'"+withdrawalShopUrl+"\'\"></td>" +
+                                "<td><input type=\"button\" value = \"등록하기\" onClick=\"location.href=\'"+enrollCouponUrl+"\'\"></td>" +
                                 "</tr>";
                             document.write(value);
                         }

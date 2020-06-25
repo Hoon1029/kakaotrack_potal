@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 @Data
 public class Coupon{
     Integer couponInforId;
-    String userId;
+    String customerId;
     Integer num;
 }

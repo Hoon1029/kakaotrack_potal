@@ -70,7 +70,7 @@
     </script>
     <details>
         <summary>Create Shop</summary>
-        <form action="/owner/createShop" method="post" enctype="multipart/form-data">
+        <form action="/owner/createShop" method="post" enctype="multipart/form-data" accept-charset="euc-kr">
             <div>
                 <div>
                     <div><a>매장이름: </a><input type="text" name="name"/></div>

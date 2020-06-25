@@ -29,7 +29,7 @@ public class CouponDao {
                 couponInfor = couponInforDao.get(couponId);
                 coupon = Coupon.builder()
                         .couponInforId(rs.getInt("couponInforId"))
-                        .userId(rs.getString("customerId"))
+                        .customerId(rs.getString("customerId"))
                         .num(rs.getInt("num")).build();
             }
             return coupon;
@@ -37,24 +37,24 @@ public class CouponDao {
     }
 
     public void insert(Coupon coupon) {
-        Object[] params = new Object[]{coupon.getCouponInforId(), coupon.getUserId(), coupon.getNum()};
-        String sql = "insert into user (couponInforId, customerId, num) values (?, ?, ?)";
+        Object[] params = new Object[]{coupon.getCouponInforId(), coupon.getCustomerId(), coupon.getNum()};
+        String sql = "insert into coupon (couponInforId, customerId, num) values (?, ?, ?)";
         jdbcTemplate.update(sql, params);
     }
 
     public void update(Coupon coupon){
-        Object[] params = new Object[]{coupon.getCouponInforId(), coupon.getUserId()};
+        Object[] params = new Object[]{coupon.getCouponInforId(), coupon.getCustomerId()};
         String sql = "update coupon set couponInforId = ?, customerId = ?, num = ? where couponInforId = ? and customerId = ?";
         jdbcTemplate.update(sql, params);
     }
 
     public void delete(Coupon coupon){
-        delete(coupon.getCouponInforId(), coupon.getUserId());
+        delete(coupon.getCouponInforId(), coupon.getCustomerId());
     }
 
     public void delete(Integer couponInforId, String userId) {
         Object[] params = new Object[]{couponInforId, userId};
-        String sql = "delete from coupon where couponInfor = ? and customerId = ?";
+        String sql = "delete from coupon where couponInforId = ? and customerId = ?";
         jdbcTemplate.update(sql, params);
     }
 }

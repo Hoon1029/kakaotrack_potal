@@ -54,7 +54,7 @@
             <form id = "couponEnrollmentTag" method="post" enctype="multipart/form-data">
                 <script>
                     if(unEnrolledShops.length == 0){
-                        document.write("가입된 매장이 없습니다.");
+                        document.write("가입할 매장이 없습니다.");
                     }else{
                         document.write("<table>" +
                             "<tr bgcolor=white align=center>" +

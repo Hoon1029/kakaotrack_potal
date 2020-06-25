@@ -51,42 +51,38 @@ public class CustomerController {
 
     @GetMapping("/couponList/{shopId}")
     public ModelAndView couponList(@PathVariable("shopId") Integer shopId, HttpServletRequest request) throws JsonProcessingException {
-        @Data
-        class CouponData{
-            String couponName, productName;
-            Integer productPrice, stampNum;
-            Integer couponInforId;
-        }
         String userId = userManager.getUser(request).getId();
         ArrayList<CouponInfor> couponInfors = couponInforDao.getByShopId(shopId);
-        ArrayList<CouponData> couponDatas = new ArrayList<CouponData>();
+        ArrayList<CouponData> enrolledCouponDatas = new ArrayList<CouponData>();
+        ArrayList<CouponData> unEnrolledCouponDatas = new ArrayList<CouponData>();
         Coupon coupon = null;
         Product product = null;
         CouponInfor couponInfor = null;
         CouponData couponData = null;
         for(int i=0 ; i<couponInfors.size() ; i++){
             coupon = couponDao.get(couponInfors.get(i).getId(), userId);
+            couponInfor = couponInfors.get(i);
+            product = productDao.get(couponInfor.getProductId());
+            couponData = new CouponData();
+            couponData.setCouponName(couponInfor.getName());
+            couponData.setProductName(product.getName());
+            couponData.setProductPrice(product.getPrice());
+            couponData.setMaxStampNum(couponInfor.getMaxStampNum());
+            couponData.setCouponInforId(couponInfor.getId());
             if(coupon != null) {
-                System.out.println("1234");
-                couponInfor = couponInforDao.get(coupon.getCouponInforId());
-                if(couponInfor == null)
-                    System.out.println("hello");
-                System.out.println(couponInfor.getProductId());
-                product = productDao.get(couponInfor.getProductId());
-                System.out.println("1234");
-                couponData = new CouponData();
-                couponData.setCouponName(couponInfor.getName());
-                couponData.setProductName(product.getName());
-                couponData.setProductPrice(product.getPrice());
                 couponData.setStampNum(coupon.getNum());
-                couponData.setCouponInforId(couponInfor.getId());
-                couponDatas.add(couponData);
+                enrolledCouponDatas.add(couponData);
+            }else{
+                unEnrolledCouponDatas.add(couponData);
             }
         }
+
         ModelAndView modelAndView = new ModelAndView("customer/couponList");
         modelAndView.addObject("shop", shopDao.get(shopId));
-        modelAndView.addObject("couponsJson", objectMapper.writeValueAsString(couponDatas));
+        modelAndView.addObject("enrolledCouponDatasJson", objectMapper.writeValueAsString(enrolledCouponDatas));
+        modelAndView.addObject("unEnrolledCouponDatasJson", objectMapper.writeValueAsString(unEnrolledCouponDatas));
         return modelAndView;
+
     }
 
     @RequestMapping("/enrollShop/{shopId}")
@@ -112,3 +108,4 @@ public class CustomerController {
     }
 
 }
+

@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+
 @AllArgsConstructor
 @Component
 public class CouponDao {
@@ -17,9 +19,9 @@ public class CouponDao {
     @Autowired
     private final ProductDao productDao;
 
-    public Coupon get(Integer couponId, String userId){
-        Object[] params = new Object[]{couponId, userId};
-        String sql = "select couponInforId, userId, num from coupon where couponInforId = ? and userId = ?";
+    public Coupon get(Integer couponId, String customerId){
+        Object[] params = new Object[]{couponId, customerId};
+        String sql = "select couponInforId, customerId, num from coupon where couponInforId = ? and customerId = ?";
         return jdbcTemplate.query(sql, params, rs -> {
             Coupon coupon = null;
             CouponInfor couponInfor = null;
@@ -27,7 +29,7 @@ public class CouponDao {
                 couponInfor = couponInforDao.get(couponId);
                 coupon = Coupon.builder()
                         .couponInforId(rs.getInt("couponInforId"))
-                        .userId(rs.getString("userId"))
+                        .userId(rs.getString("customerId"))
                         .num(rs.getInt("num")).build();
             }
             return coupon;
@@ -36,13 +38,13 @@ public class CouponDao {
 
     public void insert(Coupon coupon) {
         Object[] params = new Object[]{coupon.getCouponInforId(), coupon.getUserId(), coupon.getNum()};
-        String sql = "insert into user (couponInforId, userId, num) values (?, ?, ?)";
+        String sql = "insert into user (couponInforId, customerId, num) values (?, ?, ?)";
         jdbcTemplate.update(sql, params);
     }
 
     public void update(Coupon coupon){
         Object[] params = new Object[]{coupon.getCouponInforId(), coupon.getUserId()};
-        String sql = "update coupon set couponInforId = ?, userId = ?, num = ? where couponInforId = ? and userId = ?";
+        String sql = "update coupon set couponInforId = ?, customerId = ?, num = ? where couponInforId = ? and customerId = ?";
         jdbcTemplate.update(sql, params);
     }
 
@@ -52,7 +54,7 @@ public class CouponDao {
 
     public void delete(Integer couponInforId, String userId) {
         Object[] params = new Object[]{couponInforId, userId};
-        String sql = "delete from coupon where couponInfor = ? and userId = ?";
+        String sql = "delete from coupon where couponInfor = ? and customerId = ?";
         jdbcTemplate.update(sql, params);
     }
 }

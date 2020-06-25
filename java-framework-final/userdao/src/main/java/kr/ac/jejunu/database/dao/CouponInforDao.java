@@ -48,11 +48,32 @@ public class CouponInforDao {
                 couponInfor = CouponInfor.builder().id(rs.getInt("id"))
                         .shopId(rs.getInt("shopId"))
                         .name(rs.getString("name"))
+                        .maxStampNum(rs.getInt("maxStampNum"))
                         .backgoundImgId(rs.getString("backgroundImgId"))
                         .productId(rs.getInt("productId"))
                         .stampImgId(rs.getString("stampImgId")).build();
             }
             return couponInfor;
+        });
+    }
+
+    public ArrayList<CouponInfor> getAllByShopIdExceptForByCustomerId(Integer shopId, String customerId){
+        Object[] params = new Object[]{shopId, customerId};
+        String sql = "select * from couponInfor where shopId = ? and id not in (select couponInforId from coupon where customerId = ?)";
+        return jdbcTemplate.query(sql, params, rs -> {
+            ArrayList<CouponInfor> couponInfors = new ArrayList<CouponInfor>();
+            CouponInfor couponInfor = null;
+            if (rs.next()) {
+                couponInfor = CouponInfor.builder().id(rs.getInt("id"))
+                        .shopId(rs.getInt("shopId"))
+                        .name(rs.getString("name"))
+                        .maxStampNum(rs.getInt("maxStampNum"))
+                        .backgoundImgId(rs.getString("backgroundImgId"))
+                        .productId(rs.getInt("productId"))
+                        .stampImgId(rs.getString("stampImgId")).build();
+                couponInfors.add(couponInfor);
+            }
+            return couponInfors;
         });
     }
 

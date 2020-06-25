@@ -1,7 +1,7 @@
 SET foreign_key_checks = 0;
 drop table SHOP;
 drop table USER;
-drop table JOIN;
+drop table ENROLLMENT;
 drop table COUPONINFOR;
 drop table PRODUCT;
 drop table COUPON;
@@ -39,18 +39,18 @@ values
 ("yh123", "1234", "허윤호", true),
 ("mh123", "1234", "한명훈", false);
 
-create table JOIN(
+create table ENROLLMENT(
 shopId int NOT NULL,
 customerId char(20) NOT NULL,
 primary key (shopId, customerId),
-foreign key (shopId) references SHOP (id) on delete cascade
-foreign key (customerId) references USER (id) on delete cascade,
+foreign key (shopId) references SHOP (id) on delete cascade,
+foreign key (customerId) references USER (id) on delete cascade
 );
 
-insert into JOIN (userId, shopId)
+insert into ENROLLMENT (shopId, customerId)
 values
-("mh123", 1),
-("mh123", 2);
+(1, "mh123"),
+(2, "mh123");
 
 create table product(
 id int auto_increment,
@@ -96,14 +96,14 @@ values
 
 create table COUPON (
 couponInforId int NOT NULL,
-userId char(20) NOT NULL,
+customerId char(20) NOT NULL,
 num int default 0,
-primary key(couponInforId, userId),
+primary key(couponInforId, customerId),
 foreign key (couponInforId) references COUPONINFOR (id) on delete cascade,
-foreign key (userId) references USER (id) on delete cascade
+foreign key (customerId) references USER (id) on delete cascade
 );
 
-insert into COUPON (couponInforId, userId)
+insert into COUPON (couponInforId, customerId)
 values
 (1, "mh123"),
 (2, "mh123"),

@@ -11,12 +11,13 @@
     }
 </style>
 <script>
+    //var userId = ${userId};
     var shops = ${shopsJson};
 </script>
 <head></head>
 <body>
-    <a href = "/customer/shopList">customer</a>
-    <a href = "/logout">logout</a>
+<a href = "/customer/shopList">CUSTOMER MODE</a>
+<a href = "/logout">LOGOUT</a>
     <hr>
     <h1>Welcome to "My coupon"</h1>
     <hr>
@@ -29,14 +30,14 @@
         }else{
             document.write("<table>" +
                 "<tr bgcolor=white align=center>" +
-                "<td> 매장 번호</td>" +
-                "<td> 매장 명 </td>" +
-                "<td> 매장 주소</td>" +
+                "<td> 번호</td>" +
+                "<td> 매장명 </td>" +
+                "<td> 매장주소</td>" +
                 "<td> X좌표 </td>" +
                 "<td> Y좌표 </td>" +
-                "<td> 관리 </td>" +
-                "<td> 수정 </td>" +
-                "<td> 삭제 </td>" +
+                "<td> 관리하기 </td>" +
+                "<td> 수정하기 </td>" +
+                "<td> 삭제하기 </td>" +
                 "</tr>");
             for(var i=0 ; i<shops.length ; i++){
                 var managementUrl = "/owner/shop/"+shops[i].id;
@@ -47,9 +48,9 @@
                         "<td>"+shops[i].address+"</td>" +
                         "<td>"+shops[i].locateX+"</td>" +
                         "<td>"+shops[i].locateY+"</td>" +
-                        "<td><input type=\"button\" value = \"관리\" onClick=\"location.href=\'"+managementUrl+"\'\"></td>" +
-                        "<td><input type=\"button\" value = \"수정\" onClick= openModifPage()></td>" +
-                        "<td><input type=\"button\" value = \"삭제\" onClick=\"location.href=\'"+deleteUrl+"\'\"></td>" +
+                        "<td><input type=\"button\" value = \"관리하기\" onClick=\"location.href=\'"+managementUrl+"\'\"></td>" +
+                        "<td><input type=\"button\" value = \"수정하기\" onClick= openModifPage()></td>" +
+                        "<td><input type=\"button\" value = \"삭제하기\" onClick=\"location.href=\'"+deleteUrl+"\'\"></td>" +
                         "</tr>";
                     document.write(value);
             }
@@ -68,16 +69,16 @@
         // }
     </script>
     <details>
-        <summary>매장 추가하기</summary>
+        <summary>Create Shop</summary>
         <form action="/owner/createShop" method="post" enctype="multipart/form-data">
             <div>
                 <div>
-                    <div><a>매장 이름: </a><input type="text" name="name"/></div>
-                    <div><a>매장 주소: </a><input type="text" name="address"/></div>
+                    <div><a>매장이름: </a><input type="text" name="name"/></div>
+                    <div><a>매장주소: </a><input type="text" name="address"/></div>
                     <div><a>X좌표: </a><input type="text" name="locateX"/></div>
                     <div><a>Y좌표: </a><input type="text" name="locateY"/></div>
                 </div>
-                <div><input type="submit" value="등록하기"/></div>
+                <div><input type="submit" value="생성하기"/></div>
             </div>
         </form>
     </details>

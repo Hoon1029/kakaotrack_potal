@@ -1,14 +1,14 @@
 <%@page contentType="text/html; charset=UTF-8" %>
 <html>
 <style>
-
+    details {margin_top:10px;}
 </style>
 <head>
 
 </head>
 <body>
-<a href = "/owner/shopList">owner_mode</a>
-<a href = "/logout">logout</a>
+<a href = "/owner/shopList">OWNER MODE</a>
+<a href = "/logout">LOGOUT</a>
 <hr>
 <h1>Welcome to "My coupon"</h1>
 <hr>

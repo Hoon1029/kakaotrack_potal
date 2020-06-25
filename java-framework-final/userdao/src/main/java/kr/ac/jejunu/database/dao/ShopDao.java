@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 @Component
 public class ShopDao {
+
     @Autowired
     private final JdbcTemplate jdbcTemplate;
 
@@ -32,6 +33,46 @@ public class ShopDao {
                 shop.setLocateY(rs.getDouble("locateY"));
             }
             return shop;
+        });
+    }
+
+    public ArrayList<Shop> getAll(){
+        Object[] params = new Object[]{};
+        String sql = "select id, ownerId, name, address, locateX, locateY from shop";
+        return jdbcTemplate.query(sql, params, rs -> {
+            ArrayList<Shop> shops = new ArrayList();
+            Shop shop = null;
+            while (rs.next()) {
+                shop = new Shop();
+                shop.setId(rs.getInt("id"));
+                shop.setOwnerId(rs.getString("ownerId"));
+                shop.setName(rs.getString("name"));
+                shop.setAddress(rs.getString("address"));
+                shop.setLocateX(rs.getDouble("locateX"));
+                shop.setLocateY(rs.getDouble("locateY"));
+                shops.add(shop);
+            }
+            return shops;
+        });
+    }
+
+    public ArrayList<Shop> getAllEceptForByCustomerId(String customerId){
+        Object[] params = new Object[]{customerId};
+        String sql = "select * from shop where id not in (select shopId from enrollment where customerId = ?)";
+        return jdbcTemplate.query(sql, params, rs -> {
+            ArrayList<Shop> shops = new ArrayList();
+            Shop shop = null;
+            while (rs.next()) {
+                shop = new Shop();
+                shop.setId(rs.getInt("id"));
+                shop.setOwnerId(rs.getString("ownerId"));
+                shop.setName(rs.getString("name"));
+                shop.setAddress(rs.getString("address"));
+                shop.setLocateX(rs.getDouble("locateX"));
+                shop.setLocateY(rs.getDouble("locateY"));
+                shops.add(shop);
+            }
+            return shops;
         });
     }
 
@@ -56,11 +97,11 @@ public class ShopDao {
         });
     }
 
-    public ArrayList<Shop> getByUserId(String userId) {
-        Object[] params = new Object[]{userId};
-        String sql = "select * from shop where id in (select shopId from enroll where userId = ?)";
+    public ArrayList<Shop> getByCustomerId(String customerId) {
+        Object[] params = new Object[]{customerId};
+        String sql = "select * from shop where id in (select shopId from enrollment where customerId = ?)";
         return jdbcTemplate.query(sql, params, rs -> {
-            ArrayList<Shop> shops = null;
+            ArrayList<Shop> shops = new ArrayList<Shop>();
             Shop shop = null;
             while (rs.next()) {
                 shop = new Shop();
@@ -70,8 +111,6 @@ public class ShopDao {
                 shop.setAddress(rs.getString("address"));
                 shop.setLocateX(rs.getDouble("locateX"));
                 shop.setLocateY(rs.getDouble("locateY"));
-                if( shops == null)
-                    shops = new ArrayList<Shop>();
                 shops.add(shop);
             }
             return shops;

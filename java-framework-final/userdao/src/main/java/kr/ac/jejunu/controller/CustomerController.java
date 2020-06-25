@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 @Controller
@@ -27,16 +28,20 @@ public class CustomerController {
     private final CouponDao couponDao;
     private final ObjectMapper objectMapper;
     private final ProductDao productDao;
+    private final EnrollmentDao enrollmentDao;
 
     @RequestMapping(path = "/shopList")
     public ModelAndView index(HttpServletRequest request) throws JsonProcessingException {
         ModelAndView modelAndView = new ModelAndView();;
         if(userManager.isOnLogin(request)){
             User user = userManager.getUser(request);
-            ArrayList<Shop> shops = shopDao.getByUserId(user.getId());
+            ArrayList<Shop> enrolledShops = shopDao.getByCustomerId(user.getId());
             modelAndView.addObject("loginFlag", true);
             modelAndView.addObject("user", userManager.getUser(request));
-            modelAndView.addObject("shopsJson", objectMapper.writeValueAsString(shops));
+            modelAndView.addObject("enrolledShopsJson", objectMapper.writeValueAsString(enrolledShops));
+
+            ArrayList<Shop> unEnrolledShops = shopDao.getAllEceptForByCustomerId(user.getId());
+            modelAndView.addObject("unEnrolledShopsJson", objectMapper.writeValueAsString(unEnrolledShops));
         }
         else{
             modelAndView.addObject("loginFlag", false);
@@ -83,4 +88,27 @@ public class CustomerController {
         modelAndView.addObject("couponsJson", objectMapper.writeValueAsString(couponDatas));
         return modelAndView;
     }
+
+    @RequestMapping("/enrollShop/{shopId}")
+    public String enrollShop(@PathVariable("shopId") Integer shopId, HttpServletRequest request){
+        if(userManager.isOnLogin(request)) {
+            User user = userManager.getUser(request);
+            enrollmentDao.insert(new Enrollment(shopId, user.getId()));
+        } else {
+
+        }
+        return "redirect:/customer/shopList";
+    }
+
+    @RequestMapping("withdrawShop/{shopId}")
+    public String withdrawShop(@PathVariable("shopId") Integer shopId, HttpServletRequest request){
+        if(userManager.isOnLogin(request)) {
+            User user = userManager.getUser(request);
+            enrollmentDao.delete(shopId, user.getId());
+        } else {
+
+        }
+        return "redirect:/customer/shopList";
+    }
+
 }

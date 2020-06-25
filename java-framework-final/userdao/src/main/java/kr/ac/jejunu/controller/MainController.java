@@ -27,20 +27,7 @@ public class MainController {
         return;
     }
 
-    @RequestMapping(path = "/index")
-    public ModelAndView index(HttpServletRequest request){
-        ModelAndView modelAndView = new ModelAndView();;
-        if(userManager.isOnLogin(request)){
-            modelAndView.addObject("loginFlag", true);
-            modelAndView.addObject("user", userManager.getUser(request));
-        }
-        else{
-            modelAndView.addObject("loginFlag", false);
-        }
-        return modelAndView;
-    }
-
-    @RequestMapping(path = "/login_request")
+    @RequestMapping(path = "/loginRequest")
     public ModelAndView login(HttpServletRequest request, HttpSession session){
         User user = User.builder().id(request.getParameter("id"))
                 .password(request.getParameter("password")).build();

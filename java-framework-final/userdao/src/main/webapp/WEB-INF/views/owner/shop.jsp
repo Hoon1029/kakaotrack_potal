@@ -32,7 +32,7 @@
     }
 </style>
 <script>
-    var userId = ${userId};
+    //var userId = ${userId};
     var shopId = ${shopId};
     var products = ${productsJson};
     var couponInfors = ${couponInforsJson}
@@ -40,8 +40,8 @@
 <head>
 </head>
 <body>
-    <a href = "/customer/shopList">customer</a>
-    <a href = "/logout">logout</a>
+    <a href = "/customer/shopList">CUSTOMER MODE</a>
+    <a href = "/logout">LOGOUT</a>
     <hr>
     <h1>Welcome to "My coupon"</h1>
     <hr>
@@ -57,6 +57,7 @@
                 }else{
                     document.write("<table>" +
                         "<tr bgcolor=white align=center>" +
+                        "<td> 번호 </td>" +
                         "<td> 제품 ID </td>" +
                         "<td> 제품명 </td>" +
                         "<td> 제품가격 </td>" +
@@ -67,6 +68,7 @@
                     for(var i=0 ; i<products.length ; i++){
                         var deleteProductUrl = "/owner/deleteProduct/"+shopId+"/"+products[i].id;
                         var value = "<tr align=center onclick='modifyPage(i)'>" +
+                            "<td>"+(i+1)+"</td>" +
                             "<td>"+products[i].id+"</td>" +
                             "<td>"+products[i].name+"</td>" +
                             "<td>"+products[i].price+"</td>" +
@@ -111,20 +113,22 @@
                 }else{
                     document.write("<table>" +
                         "<tr bgcolor=white align=center>" +
-                        "<td> 쿠폰 명 </td>" +
+                        "<td> 번호 </td>" +
+                        "<td> 쿠폰명 </td>" +
                         "<td> 상품ID </td>" +
                         "<td> 스탬프 </td>" +
-                        "<td> 수정 </td>" +
-                        "<td> 삭제 </td>" +
+                        "<td> 수정하기 </td>" +
+                        "<td> 삭제하기 </td>" +
                         "</tr>");
                     for(var i=0 ; i<couponInfors.length ; i++){
                         var deleteCouponInforUrl = "/owner/deleteCouponInfor/"+shopId+"/"+couponInfors[i].id;
                         var value = "<tr align=center>" +
+                            "<td>"+(i+1)+"</td>" +
                             "<td>"+couponInfors[i].name+"</td>" +
                             "<td>"+couponInfors[i].productId+"</td>" +
                             "<td>"+couponInfors[i].maxStampNum+"</td>" +
-                            "<td><input type=\"button\" value = \"수정\" onClick= openModifPage()></td>" +
-                            "<td><input type=\"button\" value = \"삭제\" onClick=\"location.href=\'"+deleteCouponInforUrl+"\'\"></td>" +
+                            "<td><input type=\"button\" value = \"수정하기\" onClick= openModifPage()></td>" +
+                            "<td><input type=\"button\" value = \"삭제하기\" onClick=\"location.href=\'"+deleteCouponInforUrl+"\'\"></td>" +
                             "</tr>";
                         document.write(value);
                     }
@@ -141,11 +145,11 @@
                         </script>
                         <div>
                             <div>
-                                <div>쿠폰 명<input type="text" name="name"/></div>
-                                <div>상품 ID<input type="text" name="productId"/></div>
-                                <div>도장 개수<input type="text" name="maxStampNum"/></div>
-                                <div>배경 이미지 <input type="file" name="bagroundImgId"/></div>
-                                <div>도장 이미지<input type="file" name="stampImgId"/></div>
+                                <div>쿠폰명<input type="text" name="name"/></div>
+                                <div>상품ID<input type="text" name="productId"/></div>
+                                <div>도장개수<input type="text" name="maxStampNum"/></div>
+                                <div>배경이미지 <input type="file" name="bagroundImgId"/></div>
+                                <div>도장이미지<input type="file" name="stampImgId"/></div>
                             </div>
                             <div><input type="submit" value="등록하기"/></div>
                         </div>

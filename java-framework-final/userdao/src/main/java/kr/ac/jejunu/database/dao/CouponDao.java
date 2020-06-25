@@ -3,12 +3,18 @@ package kr.ac.jejunu.database.dao;
 import kr.ac.jejunu.database.object.Coupon;
 import kr.ac.jejunu.database.object.CouponInfor;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
 
 @AllArgsConstructor
+@Component
 public class CouponDao {
+    @Autowired
     private final JdbcTemplate jdbcTemplate;
+    @Autowired
     private final CouponInforDao couponInforDao;
+    @Autowired
     private final ProductDao productDao;
 
     public Coupon get(Integer couponId, String userId){

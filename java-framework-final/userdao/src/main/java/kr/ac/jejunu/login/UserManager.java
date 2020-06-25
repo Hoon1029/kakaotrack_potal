@@ -3,14 +3,17 @@ package kr.ac.jejunu.login;
 import kr.ac.jejunu.database.object.User;
 import kr.ac.jejunu.database.dao.UserDao;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @AllArgsConstructor
+@Component
 public class UserManager {
-
+    @Autowired
     private final UserDao userDao;
 
     public boolean isOnLogin(HttpServletRequest request){

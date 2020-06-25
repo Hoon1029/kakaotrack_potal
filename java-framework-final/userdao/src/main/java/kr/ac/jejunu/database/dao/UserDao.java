@@ -1,10 +1,13 @@
 package kr.ac.jejunu.database.dao;
 
 import kr.ac.jejunu.database.object.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
 
+@Component
 public class UserDao {
-
+    @Autowired
     private final JdbcTemplate jdbcTemplate;
 
     public UserDao(JdbcTemplate jdbcContext) {

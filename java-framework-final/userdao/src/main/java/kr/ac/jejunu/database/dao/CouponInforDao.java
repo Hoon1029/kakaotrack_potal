@@ -2,13 +2,16 @@ package kr.ac.jejunu.database.dao;
 
 import kr.ac.jejunu.database.object.CouponInfor;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 
 @AllArgsConstructor
+@Component
 public class CouponInforDao {
-
+    @Autowired
     private final JdbcTemplate jdbcTemplate;
 
     public ArrayList<CouponInfor> getByShopId(Integer shopId){

@@ -2,13 +2,17 @@ package kr.ac.jejunu.database.dao;
 
 import kr.ac.jejunu.database.object.Product;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 @AllArgsConstructor
+@Component
 public class ProductDao {
+    @Autowired
     private final JdbcTemplate jdbcTemplate;
 
     public Product get(Integer id){

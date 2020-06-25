@@ -5,13 +5,16 @@ import java.util.ArrayList;
 
 import kr.ac.jejunu.database.object.Shop;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Component;
 
 @AllArgsConstructor
+@Component
 public class ShopDao {
-
+    @Autowired
     private final JdbcTemplate jdbcTemplate;
 
     public Shop get(Integer id){

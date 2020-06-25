@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import kr.ac.jejunu.database.dao.*;
 import kr.ac.jejunu.database.object.*;
 import kr.ac.jejunu.login.UserManager;
+import kr.ac.jejunu.database.object.User;
+import kr.ac.jejunu.database.dao.UserDao;
 import lombok.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;

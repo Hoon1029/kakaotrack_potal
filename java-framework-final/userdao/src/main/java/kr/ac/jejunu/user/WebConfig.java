@@ -15,9 +15,12 @@ import java.util.List;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan("kr.ac.jejunu.user")
+
 @ComponentScan("kr.ac.jejunu.controller")
-@ComponentScan("kr.ac.jejunu.owner")
+@ComponentScan("kr.ac.jejunu.database.dao")
+@ComponentScan("kr.ac.jejunu.database.object")
+@ComponentScan("kr.ac.jejunu.login")
+@ComponentScan("kr.ac.jejunu.user")
 @AllArgsConstructor
 public class WebConfig implements WebMvcConfigurer {
     private final MainInterceptor userInterceptor;

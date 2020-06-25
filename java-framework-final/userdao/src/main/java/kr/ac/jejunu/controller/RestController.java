@@ -5,9 +5,6 @@ import kr.ac.jejunu.database.dao.UserDao;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.text.AbstractDocument;
-import java.io.File;
-
 @org.springframework.web.bind.annotation.RestController
 @RequestMapping("/rest")
 @RequiredArgsConstructor
@@ -16,12 +13,12 @@ public class RestController {
 
     @GetMapping("/{id}")
     public User get(@PathVariable("id") String id){
-        return userDao.get(id);
+        return userDao.findById(id).get();
     }
 
 
     public User create(@RequestBody User user){
-        userDao.insert(user);
+        userDao.save(user);
         return user;
     }
 }

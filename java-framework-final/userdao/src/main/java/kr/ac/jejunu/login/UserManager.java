@@ -3,14 +3,17 @@ package kr.ac.jejunu.login;
 import kr.ac.jejunu.database.object.User;
 import kr.ac.jejunu.database.dao.UserDao;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @AllArgsConstructor
+@Component
 public class UserManager {
-
+    @Autowired
     private final UserDao userDao;
 
     public boolean isOnLogin(HttpServletRequest request){
@@ -24,13 +27,13 @@ public class UserManager {
     }
 
     public boolean isAlreadyExist(User user){
-        if(userDao.get(user.getId()) == null)
+        if(userDao.findById(user.getId()).get() == null)
             return false;
         return true;
     }
 
     public boolean isMember(User user){
-        User userData = userDao.get(user.getId());
+        User userData = userDao.findById(user.getId()).get();
         if(userData == null)
             return false;
 
@@ -45,7 +48,7 @@ public class UserManager {
     public void login(User user, HttpServletRequest request){
         String key = request.getCookies()[0].getValue();
         HttpSession session = request.getSession();
-        User userData = userDao.get(user.getId());
+        User userData = userDao.findById(user.getId()).get();
         session.setAttribute(key, userData);
     }
 
@@ -57,6 +60,6 @@ public class UserManager {
     }
 
     public void createUser(User user){
-        userDao.insert(user);
+        userDao.save(user);
     }
 }

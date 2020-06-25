@@ -13,7 +13,8 @@ public class CouponInfor {
     Integer id;
     Integer shopId;
     String name;
+    Integer maxStampNum;
     Integer productId;
-    String backgoundId;
-    String stampId;
+    String backgoundImgId;
+    String stampImgId;
 }

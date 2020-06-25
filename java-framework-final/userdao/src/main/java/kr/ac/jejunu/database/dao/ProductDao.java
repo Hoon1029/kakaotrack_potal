@@ -76,4 +76,10 @@ public class ProductDao {
         }, keyHolder);
         product.setId(keyHolder.getKey().intValue());
     }
+
+    public void delete(Integer id) {
+        Object[] params = new Object[]{id};
+        String sql = "delete from product where id = ?";
+        jdbcTemplate.update(sql, params);
+    }
 }

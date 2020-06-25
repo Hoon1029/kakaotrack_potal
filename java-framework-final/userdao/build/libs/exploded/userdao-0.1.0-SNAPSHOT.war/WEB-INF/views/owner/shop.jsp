@@ -31,12 +31,13 @@
         margin-left: 20px;
     }
 </style>
+<script>
+    var shopId = ${shopId};
+    var products = ${productsJson};
+    var couponInfors = ${couponInforsJson}
+</script>
 <head>
 </head>
-<script>
-    var products = ${productsJson};
-    var shopId = ${shopId};
-</script>
 <body>
     <a href = "/customer/shopList">customer</a>
     <a href = "/logout">logout</a>
@@ -45,46 +46,45 @@
     <hr>
 
     <details class="details1">
-        <summary class="details1">PRODUCT</summary>
+        <summary class="details1">Product List</summary>
         <div class="details1_content">
-            <details class="details2">
-                <summary class="details2">PRODUCT_LIST</summary>
-                <div class="details2_content">
-                <script open="true">
+            <script open="true">
 
 
-                    if(products.length == 0){
-                        document.write("등록된 제품이 없습니다.");
-                    }else{
-                        document.write("<table>" +
-                            "<tr bgcolor=white align=center>" +
-                            "<td> 제품 ID </td>" +
-                            "<td> 제품명 </td>" +
-                            "<td> 제품가격 </td>" +
-                            "<td> 판매 여부 </td>" +
-                            "</tr>")
-                        for(var i=0 ; i<products.length ; i++){
-                            var value = "<tr align=center>" +
-                                "<td>"+products[i].id+"</td>" +
-                                "<td>"+products[i].name+"</td>" +
-                                "<td>"+products[i].price+"</td>" +
-                                "<td>"+products[i].sellFlag+"</td>" +
-                                "</tr>"
-                            document.write(value);
-                        }
-                        document.write("</table>");
+                if(products.length == 0){
+                    document.write("등록된 제품이 없습니다.");
+                }else{
+                    document.write("<table>" +
+                        "<tr bgcolor=white align=center>" +
+                        "<td> 제품 ID </td>" +
+                        "<td> 제품명 </td>" +
+                        "<td> 제품가격 </td>" +
+                        "<td> 판매 여부 </td>" +
+                        "<td> 수정 </td>" +
+                        "<td> 삭제 </td>" +
+                        "</tr>")
+                    for(var i=0 ; i<products.length ; i++){
+                        var deleteProductUrl = "/owner/deleteProduct/"+shopId+"/"+products[i].id;
+                        var value = "<tr align=center onclick='modifyPage(i)'>" +
+                            "<td>"+products[i].id+"</td>" +
+                            "<td>"+products[i].name+"</td>" +
+                            "<td>"+products[i].price+"</td>" +
+                            "<td>"+products[i].sellFlag+"</td>" +
+                            "<td><input type=\"button\" value = \"수정\" onClick= openModifPage()></td>" +
+                            "<td><input type=\"button\" value = \"삭제\" onClick=\"location.href=\'"+deleteProductUrl+"\'\"></td>" +
+                            "</tr>"
+                        document.write(value);
                     }
-
-                </script>
-                </div>
-            </details>
+                    document.write("</table>");
+                }
+            </script>
 
             <details class="details2">
                 <summary class="details2">PRODUCT_ENROLLMENT</summary>
                 <div class="details2_content">
-                    <form id = "enrollmentTag" method="post" enctype="multipart/form-data">
+                    <form id = "productEnrollmentTag" method="post" enctype="multipart/form-data">
                     <script>
-                        var tag = document.getElementById("enrollmentTag")
+                        var tag = document.getElementById("productEnrollmentTag")
                         tag.action = "/owner/enrollProduct/"+shopId;
                     </script>
                         <div>
@@ -102,16 +102,53 @@
     </details>
     <hr>
     <details class="details1">
-        <summary class="details1">COUPONN</summary>
+        <summary class="details1">Coupone List</summary>
         <div class="details1_content">
-            <details class="details2">
-                <summary class="details2">COUPONE_LIST</summary>
-                <div class="details2_content">
-                </div>
-            </details>
+            <script>
+                if(couponInfors.length == 0){
+                    document.write("등록된 쿠폰이 없습니다.");
+                }else{
+                    document.write("<table>" +
+                        "<tr bgcolor=white align=center>" +
+                        "<td> 쿠폰 명 </td>" +
+                        "<td> 상품ID </td>" +
+                        "<td> 스탬프 </td>" +
+                        "<td> 수정 </td>" +
+                        "<td> 삭제 </td>" +
+                        "</tr>");
+                    for(var i=0 ; i<couponInfors.length ; i++){
+                        var deleteCouponInforUrl = "/owner/deleteCouponInfor/"+shopId+"/"+couponInfors[i].id;
+                        var value = "<tr align=center>" +
+                            "<td>"+couponInfors[i].name+"</td>" +
+                            "<td>"+couponInfors[i].productId+"</td>" +
+                            "<td>"+couponInfors[i].maxStampNum+"</td>" +
+                            "<td><input type=\"button\" value = \"수정\" onClick= openModifPage()></td>" +
+                            "<td><input type=\"button\" value = \"삭제\" onClick=\"location.href=\'"+deleteCouponInforUrl+"\'\"></td>" +
+                            "</tr>";
+                        document.write(value);
+                    }
+                    document.write("</table>");
+                }
+            </script>
             <details class="details2">
                 <summary class="details2">COUPONE_ENROLLMENT</summary>
                 <div class="details2_content">
+                    <form id = "couponEnrollmentTag" method="post" enctype="multipart/form-data">
+                        <script>
+                            var tag = document.getElementById("couponEnrollmentTag")
+                            tag.action = "/owner/enrollCoupon/"+shopId;
+                        </script>
+                        <div>
+                            <div>
+                                <div>쿠폰 명<input type="text" name="name"/></div>
+                                <div>상품 ID<input type="text" name="productId"/></div>
+                                <div>도장 개수<input type="text" name="maxStampNum"/></div>
+                                <div>배경 이미지 <input type="file" name="bagroundImgId"/></div>
+                                <div>도장 이미지<input type="file" name="stampImgId"/></div>
+                            </div>
+                            <div><input type="submit" value="등록하기"/></div>
+                        </div>
+                    </form>
                 </div>
             </details>
         </div>

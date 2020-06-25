@@ -37,15 +37,13 @@ values
 ("yh123", "1234", "허윤호", true),
 ("mh123", "1234", "한명훈", false);
 
-create table ENROLL(
+create table enroll(
 userId char(20) NOT NULL,
 shopId int NOT NULL,
-primary key (userId, shopId),
-foreign key (userId) references USER (id) on delete cascade,
-foreign key (shopId) references SHOP (id) on delete cascade
+primary key (userId, shopId)
 );
 
-insert into ENROLL (userId, shopId)
+insert into enroll (userId, shopId)
 values
 ("mh123", 1),
 ("mh123", 2);
@@ -56,8 +54,7 @@ shopId int NOT NULL,
 name char(30) NOT NULL,
 price int NOT NULL,
 sellFlag bool default true,
-primary key(id),
-foreign key (shopId) references SHOP (id) on delete cascade
+primary key(id)
 );
 
 insert into product (shopId, name, price)
@@ -78,9 +75,7 @@ productId int NOT NULL,
 maxStampNum int default 10,
 backgroundImgId char(30) default "default.png",
 stampImgId char(30) default "default.png",
-primary key(id),
-foreign key (shopId) references SHOP (id) on delete cascade,
-foreign key (productId) references PRODUCT (id) on delete cascade
+primary key(id)
 );
 
 insert into couponInfor (shopId, productId)
@@ -96,9 +91,7 @@ create table coupon (
 couponInforId int NOT NULL,
 userId char(20) NOT NULL,
 num int default 0,
-primary key(couponInforId, userId),
-foreign key (couponInforId) references COUPONINFOR (id) on delete cascade,
-foreign key (userId) references USER (id) on delete cascade
+primary key(couponInforId, userId)
 );
 
 insert into coupon (couponInforId, userId)

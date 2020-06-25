@@ -11,6 +11,7 @@ import kr.ac.jejunu.database.object.Shop;
 import kr.ac.jejunu.database.object.User;
 import kr.ac.jejunu.login.UserManager;
 import lombok.RequiredArgsConstructor;
+import org.dom4j.rule.Mode;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -63,7 +64,20 @@ public class OwnerController {
 
         ArrayList<Product> products = productDao.getByShopId(shopId);
         ModelAndView modelAndView = new ModelAndView("owner/shop");
+        modelAndView.addObject("shopId", shopId);
         modelAndView.addObject("productsJson", objectMapper.writeValueAsString(products));
         return modelAndView;
+    }
+
+    @PostMapping("/enrollProduct/{shopId}")
+    public String enrollProduct(@PathVariable("shopId") Integer shopId, HttpServletRequest request){
+        Product product = Product.builder()
+                .shopId(shopId)
+                .name(request.getParameter("name"))
+                .price(Integer.valueOf(request.getParameter("price")))
+                .sellFlag(true).build();
+        System.out.println(request.getParameter("name"));
+        productDao.insert(product);
+        return "redirect:/owner/shop/{shopId}";
     }
 }

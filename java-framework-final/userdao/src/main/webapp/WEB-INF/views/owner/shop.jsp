@@ -1,4 +1,6 @@
-<%@page contentType="text/html; charset=UTF-8" %>
+<%@page contentType="text/html; charset=UTF-8" pageEncoding="EUC-KR"%>
+
+<% request.setCharacterEncoding("euc-kr"); %>
 <html>
 <style>
     * {
@@ -31,6 +33,10 @@
 </style>
 <head>
 </head>
+<script>
+    var products = ${productsJson};
+    var shopId = ${shopId};
+</script>
 <body>
     <a href = "/customer/shopList">customer</a>
     <a href = "/logout">logout</a>
@@ -45,17 +51,17 @@
                 <summary class="details2">PRODUCT_LIST</summary>
                 <div class="details2_content">
                 <script open="true">
-                    var products = ${productsJson};
+
 
                     if(products.length == 0){
-                        document.write("Îì±Î°ùÎêú Ï†úÌíàÏù¥ ÏóÜÏäµÎãàÎã§.");
+                        document.write("µÓ∑œµ» ¡¶«∞¿Ã æ¯Ω¿¥œ¥Ÿ.");
                     }else{
                         document.write("<table>" +
                             "<tr bgcolor=white align=center>" +
-                            "<td> Ï†úÌíà ID </td>" +
-                            "<td> Ï†úÌíàÎ™Ö </td>" +
-                            "<td> Ï†úÌíàÍ∞ÄÍ≤© </td>" +
-                            "<td> ÌåêÎß§ Ïó¨Î∂Ä </td>" +
+                            "<td> ¡¶«∞ ID </td>" +
+                            "<td> ¡¶«∞∏Ì </td>" +
+                            "<td> ¡¶«∞∞°∞› </td>" +
+                            "<td> ∆«∏≈ ø©∫Œ </td>" +
                             "</tr>")
                         for(var i=0 ; i<products.length ; i++){
                             var value = "<tr align=center>" +
@@ -69,24 +75,25 @@
                         document.write("</table>");
                     }
 
-                    for(var i=0 ; i<shops.length ; i++){
-                        var value = shops[i].name;
-                        var url = "\"/owner/couponList/{"+shops[i].id+"}/\""
-                        document.write("<div>Îß§Ïû•"+(i+1)+": <a href=" + url + ">" + value + "</a></div>");
-                    }
                 </script>
+                </div>
             </details>
+
             <details class="details2">
                 <summary class="details2">PRODUCT_ENROLLMENT</summary>
                 <div class="details2_content">
-                    <form action="/owner/enrollProduct" method="post" enctype="multipart/form-data">
+                    <form id = "enrollmentTag" method="post" enctype="multipart/form-data">
+                    <script>
+                        var tag = document.getElementById("enrollmentTag")
+                        tag.action = "/owner/enrollProduct/"+shopId;
+                    </script>
                         <div>
                             <div>
-                                <div>Ï†úÌíà Î™Ö<input type="text" name="name"/></div>
-                                <div>Ï†úÌíà Í∞ÄÍ≤©<input type="text" name="address"/></div>
-                                <div>Ï†úÌíà Ïù¥ÎØ∏ÏßÄ<input type="file" name="file"/></div>
+                                <div>¡¶«∞ ∏Ì<input type="text" name="name"/></div>
+                                <div>¡¶«∞ ∞°∞›<input type="text" name="price"/></div>
+                                <div>¡¶«∞ ¿ÃπÃ¡ˆ<input type="file" name="image"/></div>
                             </div>
-                            <div><input type="submit" value="Îì±Î°ùÌïòÍ∏∞"/></div>
+                            <div><input type="submit" value="µÓ∑œ«œ±‚"/></div>
                         </div>
                     </form>
                 </div>

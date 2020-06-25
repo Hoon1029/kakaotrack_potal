@@ -5,7 +5,7 @@
     <h1>회원가입</h1>
 
     <a>${message}</a>
-    <form action="/join_request" method="post" enctype="multipart/form-data">
+    <form RRI action="/join_request" method="post" enctype="multipart/form-data">
         <div><a>ID: </a><input type="text" name="id"/></div>
         <div><a>PW: </a><input type="password" name="password"/></div>
         <div><a>Name: </a><input type="text" name="name"/></div>

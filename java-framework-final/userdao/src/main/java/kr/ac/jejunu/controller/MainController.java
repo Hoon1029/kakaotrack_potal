@@ -23,8 +23,13 @@ public class MainController {
     private final UserManager userManager;
 
     @RequestMapping(path = "/*")
-    public void all(){
-        return;
+    public String all(){
+        return "redirect:/login";
+    }
+
+    @RequestMapping("/login")
+    public ModelAndView loginPage(){
+        return new ModelAndView();
     }
 
     @RequestMapping(path = "/loginRequest")

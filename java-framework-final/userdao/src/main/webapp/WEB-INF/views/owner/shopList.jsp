@@ -9,6 +9,7 @@
         background-color: white;
         color: black;
     }
+    table, td { border: white 1px solid; }
 </style>
 <script>
     //var userId = ${userId};

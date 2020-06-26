@@ -2,14 +2,8 @@ package kr.ac.jejunu.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import kr.ac.jejunu.database.dao.CouponInforDao;
-import kr.ac.jejunu.database.dao.ProductDao;
-import kr.ac.jejunu.database.dao.ShopDao;
-import kr.ac.jejunu.database.dao.UserDao;
-import kr.ac.jejunu.database.object.CouponInfor;
-import kr.ac.jejunu.database.object.Product;
-import kr.ac.jejunu.database.object.Shop;
-import kr.ac.jejunu.database.object.User;
+import kr.ac.jejunu.database.dao.*;
+import kr.ac.jejunu.database.object.*;
 import kr.ac.jejunu.login.UserManager;
 import lombok.RequiredArgsConstructor;
 import org.dom4j.rule.Mode;
@@ -18,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.swing.*;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
@@ -32,6 +27,8 @@ public class OwnerController {
     private final ObjectMapper objectMapper;
     private final CouponInforDao couponInforDao;
     private final ProductDao productDao;
+    private final StampRequestDao stampRequestDao;
+    private final CouponDao couponDao;
 
     @RequestMapping(path = "/shopList")
     public ModelAndView index(HttpServletRequest request) throws JsonProcessingException {
@@ -60,10 +57,16 @@ public class OwnerController {
     public ModelAndView couponList(@PathVariable("shopId") Integer shopId) throws JsonProcessingException {
         ArrayList<CouponInfor> couponInfors = couponInforDao.getByShopId(shopId);
         ArrayList<Product> products = productDao.getByShopId(shopId);
+        ArrayList<StampRequest> stampRequests = new ArrayList<StampRequest>();
+        for(int i=0 ; i<couponInfors.size() ; i++) {
+            ArrayList<StampRequest> temp = stampRequestDao.getAllById(couponInfors.get(i).getId());
+            stampRequests.addAll(temp);
+        }
         ModelAndView modelAndView = new ModelAndView("owner/shop");
         modelAndView.addObject("shopId", shopId);
         modelAndView.addObject("productsJson", objectMapper.writeValueAsString(products));
         modelAndView.addObject("couponInforsJson", objectMapper.writeValueAsString(couponInfors));
+        modelAndView.addObject("stampRequestsJson", objectMapper.writeValueAsString(stampRequests));
         return modelAndView;
     }
 
@@ -114,4 +117,30 @@ public class OwnerController {
         return "redirect:/owner/shop/{shopId}";
     }
 
+    @RequestMapping("/acceptStampRequest/{id}")
+    public String acceptStampRequest(@PathVariable("id") Integer id) {
+        StampRequest stampRequest = stampRequestDao.getById(id);
+        String customerId = stampRequest.getCustomerId();
+        Integer couponInforId = stampRequest.getCouponInforId();
+        Integer shopId = couponInforDao.get(couponInforId).getShopId();
+        Coupon coupon = couponDao.get(couponInforId, customerId);
+        CouponInfor couponInfor = couponInforDao.get(couponInforId);
+        Integer stampNum = coupon.getNum()+stampRequest.getStampNum();
+        if(stampNum >= couponInfor.getMaxStampNum()){
+            coupon.setNum(couponInfor.getMaxStampNum());
+        }else{
+            coupon.setNum(stampNum);
+        }
+        couponDao.update(coupon);
+        stampRequestDao.deleteById(id);
+        return "redirect:/owner/shop/"+shopId;
+    }
+
+    @RequestMapping("/refuseStampRequest/{id}")
+    public String refuseStampRequest(@PathVariable("id") Integer id) {
+        StampRequest stampRequest = stampRequestDao.getById(id);
+        Integer shopId = couponInforDao.get(stampRequest.getCouponInforId()).getShopId();
+        stampRequestDao.delete(stampRequest.getCouponInforId(), stampRequest.getCustomerId());
+        return "redirect:/owner/shop/"+shopId;
+    }
 }

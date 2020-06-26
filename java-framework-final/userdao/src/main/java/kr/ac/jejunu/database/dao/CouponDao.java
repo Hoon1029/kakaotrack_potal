@@ -19,14 +19,14 @@ public class CouponDao {
     @Autowired
     private final ProductDao productDao;
 
-    public Coupon get(Integer couponId, String customerId){
-        Object[] params = new Object[]{couponId, customerId};
+    public Coupon get(Integer couponInforId, String customerId){
+        Object[] params = new Object[]{couponInforId, customerId};
         String sql = "select couponInforId, customerId, num from coupon where couponInforId = ? and customerId = ?";
         return jdbcTemplate.query(sql, params, rs -> {
             Coupon coupon = null;
             CouponInfor couponInfor = null;
             if(rs.next()){
-                couponInfor = couponInforDao.get(couponId);
+                couponInfor = couponInforDao.get(couponInforId);
                 coupon = Coupon.builder()
                         .couponInforId(rs.getInt("couponInforId"))
                         .customerId(rs.getString("customerId"))
@@ -43,7 +43,7 @@ public class CouponDao {
     }
 
     public void update(Coupon coupon){
-        Object[] params = new Object[]{coupon.getCouponInforId(), coupon.getCustomerId()};
+        Object[] params = new Object[]{coupon.getCouponInforId(), coupon.getCustomerId(), coupon.getNum(), coupon.getCouponInforId(), coupon.getCustomerId()};
         String sql = "update coupon set couponInforId = ?, customerId = ?, num = ? where couponInforId = ? and customerId = ?";
         jdbcTemplate.update(sql, params);
     }

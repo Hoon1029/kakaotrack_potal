@@ -11,7 +11,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class StampRequest {
+    private Integer id;
     private Integer couponInforId;
     private String customerId;
     private Integer stampNum;
+
+    //not used in db, just for tranport date
+    private String productName;
 }

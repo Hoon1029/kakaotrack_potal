@@ -146,7 +146,11 @@ public class CustomerController {
         Integer shopId = couponInforDao.get(couponInforId).getShopId();
         if(userManager.isOnLogin(request)) {
             User user = userManager.getUser(request);
-            stampRequestDao.insert(new StampRequest(couponInforId, user.getId(), stampNum));
+            StampRequest stampRequest = StampRequest.builder()
+                    .couponInforId(couponInforId)
+                    .customerId(user.getId())
+                    .stampNum(stampNum).build();
+            stampRequestDao.insert(stampRequest);
         } else {
 
         }

@@ -30,12 +30,14 @@
     .details2_content {
         margin-left: 20px;
     }
+    table, td { border: white 1px solid; }
 </style>
 <script>
     //var userId = ${userId};
     var shopId = ${shopId};
     var products = ${productsJson};
-    var couponInfors = ${couponInforsJson}
+    var couponInfors = ${couponInforsJson};
+    var stampRequests = ${stampRequestsJson};
 </script>
 <head>
 </head>
@@ -156,6 +158,41 @@
                     </form>
                 </div>
             </details>
+        </div>
+    </details>
+    <hr>
+    <details class="details1">
+        <summary class="details1">Stamp Request List</summary>
+        <div class="details1_content">
+            <script open="true">
+                if(stampRequests.length == 0){
+                    document.write("처리할 요청이 없습니다.");
+                }else{
+                    document.write("<table>" +
+                        "<tr bgcolor=white align=center>" +
+                        "<td> 쿠폰 ID </td>" +
+                        "<td> 쿠폰 명 </td>" +
+                        "<td> 요청자 ID </td>" +
+                        "<td> 요청량 </td>" +
+                        "<td> 수락 </td>" +
+                        "<td> 거부 </td>" +
+                        "</tr>")
+                    for(var i=0 ; i<stampRequests.length ; i++){
+                        var acceptRequestUrl = "/owner/acceptStampRequest/"+stampRequests[i].id;
+                        var refuseRequestUrl = "/owner/refuseStampRequest/"+stampRequests[i].id;
+                        var value = "<tr align=center onclick='modifyPage(i)'>" +
+                            "<td>"+(i+1)+"</td>" +
+                            "<td>"+stampRequests[i].couponInforId+"</td>" +
+                            "<td>"+stampRequests[i].customerId+"</td>" +
+                            "<td>"+stampRequests[i].stampNum+"</td>" +
+                            "<td><input type=\"button\" value = \"수락\" onClick=\"location.href=\'"+acceptRequestUrl+"\'\"></td>" +
+                            "<td><input type=\"button\" value = \"거부\" onClick=\"location.href=\'"+refuseRequestUrl+"\'\"></td>" +
+                            "</tr>"
+                        document.write(value);
+                    }
+                    document.write("</table>");
+                }
+            </script>
         </div>
     </details>
 </body>

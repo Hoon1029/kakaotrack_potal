@@ -42,7 +42,7 @@
                     "<td>"+enrolledCouponDatas[i].productName+"</td>" +
                     "<td>"+enrolledCouponDatas[i].productPrice+"</td>" +
                     "<td>"+enrolledCouponDatas[i].stampNum+"/"+enrolledCouponDatas[i].maxStampNum+"</td>" +
-                    "<td><input id=\"stampRequestNum"+i+"\" style=\"width:50px;\" type=\"text\" placeholder=\"개수\"><input type=\"button\" value = \"요청하기 \" onClick=\"stampRequest("+i+");\"></td>" +
+                    "<td><input id=\"stampRequestNum"+i+"\" style=\"width:40px;\" type=\"text\" value=1><input type=\"button\" value = \"요청하기 \" onClick=\"stampRequest("+i+");\"></td>" +
                     "<td><input type=\"button\" value = \"삭제하기\" onClick=\"location.href=\'"+dropCouponUrl+"\'\"></td>" +
                     "</tr>";
                 document.write(value);

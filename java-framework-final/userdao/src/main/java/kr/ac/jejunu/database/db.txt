@@ -5,7 +5,7 @@ drop table ENROLLMENT;
 drop table COUPONINFOR;
 drop table PRODUCT;
 drop table COUPON;
-drop table STAMPREQUEST
+drop table STAMPREQUEST;
 SET foreign_key_checks = 1;
 
 create table SHOP(
@@ -113,10 +113,11 @@ values
 (6, "mh123");
 
 create table STAMPREQUEST(
+id int auto_increment,
 couponInforId int NOT NULL,
 customerId char(20) NOT NULL,
 stampNum int NOT NULL,
-primary key (couponInforId, customerId),
-foreign key (couponInforId) references COUPONINFOR (id),
-foreign key (customerId) references USER (id)
+primary key(id),
+foreign key (couponInforId) references COUPONINFOR (id) on delete cascade,
+foreign key (customerId) references USER (id) on delete cascade
 );

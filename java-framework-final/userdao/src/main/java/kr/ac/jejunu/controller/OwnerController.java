@@ -148,4 +148,11 @@ public class OwnerController {
         stampRequestDao.delete(stampRequest.getCouponInforId(), stampRequest.getCustomerId());
         return "redirect:/owner/shop/"+shopId;
     }
+
+    @ExceptionHandler(Exception.class)
+    public ModelAndView error(Exception e){
+        ModelAndView modelAndView = new ModelAndView("error");
+        modelAndView.addObject("e", e);
+        return modelAndView;
+    }
 }

@@ -21,10 +21,10 @@ public class MainController {
     private final UserManager userManager;
     private final UserDao2 userDao2;
 
-//    @RequestMapping(path = "/*")
-//    public String all(){
-//        return "redirect:/login";
-//    }
+    @RequestMapping(path = "/*")
+    public String all(){
+        return "redirect:/login";
+    }
 
     @RequestMapping("/login")
     public ModelAndView loginPage(){
@@ -102,10 +102,10 @@ public class MainController {
         return new ModelAndView("login");
     }
 
-//    @ExceptionHandler(Exception.class)
-//    public ModelAndView error(Exception e){
-//        ModelAndView modelAndView = new ModelAndView("error");
-//        modelAndView.addObject("e", e);
-//        return modelAndView;
-//    }
+    @ExceptionHandler(Exception.class)
+    public ModelAndView error(Exception e){
+        ModelAndView modelAndView = new ModelAndView("error");
+        modelAndView.addObject("e", e);
+        return modelAndView;
+    }
 }

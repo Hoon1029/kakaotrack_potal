@@ -157,6 +157,11 @@ public class CustomerController {
         return "redirect:/customer/couponList/"+String.valueOf(shopId);
     }
 
-
+    @ExceptionHandler(Exception.class)
+    public ModelAndView error(Exception e){
+        ModelAndView modelAndView = new ModelAndView("error");
+        modelAndView.addObject("e", e);
+        return modelAndView;
+    }
 }
 

@@ -31,6 +31,10 @@
         margin-left: 20px;
     }
     table, td { border: white 1px solid; }
+    text {padding-right:7px;
+        padding-lert:7px;
+        font-size: 20px;
+    }
 </style>
 <script>
     //var userId = ${userId};
@@ -43,9 +47,10 @@
 <head>
 </head>
 <body>
-    <a href = "/customer/shopList">CUSTOMER MODE</a>
-    <a href = "/logout">LOGOUT</a>
-    <hr>
+<a href = "/customer/shopList"><text class="menuButton">owner_mode</text></a>
+<a href = "/logout"><text class="menuButton">logout</text></a>
+
+<hr>
     <h1>Welcome to "My coupon"</h1>
     <hr>
 

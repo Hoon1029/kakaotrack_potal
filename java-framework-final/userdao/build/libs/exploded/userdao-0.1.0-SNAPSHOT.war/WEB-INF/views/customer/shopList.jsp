@@ -4,6 +4,10 @@
 <style>
     table, td { border: black 1px solid; }
     details {margin_top:10px;}
+    text {padding-right:7px;
+        padding-lert:7px;
+        font-size: 20px;
+    }
 </style>
 
 <script>
@@ -15,9 +19,10 @@
 <head></head>
 
 <body>
-    <a href = "/owner/shopList">OWNER MODE</a>
-    <a href = "/logout">LOGOUT</a>
-    <hr>
+<a href = "/owner/shopList"><text class="menuButton">owner_mode</text></a>
+<a href = "/logout"><text class="menuButton">logout</text></a>
+
+<hr>
     <h1>Welcome to "My coupon"</h1>
     <hr>
     <h3>My Shop List</h3>

@@ -1,5 +1,6 @@
 package kr.ac.jejunu.login;
 
+import kr.ac.jejunu.database.dao.UserDao2;
 import kr.ac.jejunu.database.object.User;
 import kr.ac.jejunu.database.dao.UserDao;
 import lombok.AllArgsConstructor;
@@ -14,7 +15,7 @@ import javax.servlet.http.HttpSession;
 @Component
 public class UserManager {
     @Autowired
-    private final UserDao userDao;
+    private final UserDao2 userDao2;
 
     public boolean isOnLogin(HttpServletRequest request){
         String key = request.getCookies()[0].getValue();
@@ -27,13 +28,13 @@ public class UserManager {
     }
 
     public boolean isAlreadyExist(User user){
-        if(userDao.findById(user.getId()).get() == null)
+        if(userDao2.get(user.getId()) == null)
             return false;
         return true;
     }
 
     public boolean isMember(User user){
-        User userData = userDao.findById(user.getId()).get();
+        User userData = userDao2.get(user.getId());
         if(userData == null)
             return false;
 
@@ -48,7 +49,7 @@ public class UserManager {
     public void login(User user, HttpServletRequest request){
         String key = request.getCookies()[0].getValue();
         HttpSession session = request.getSession();
-        User userData = userDao.findById(user.getId()).get();
+        User userData = userDao2.get(user.getId());
         session.setAttribute(key, userData);
     }
 
@@ -59,7 +60,7 @@ public class UserManager {
         return (User)session.getAttribute(key);
     }
 
-    public void createUser(User user){
-        userDao.save(user);
-    }
+//    public void createUser(User user){
+//        userDao.save(user);
+//    }
 }

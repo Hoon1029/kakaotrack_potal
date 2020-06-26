@@ -2,9 +2,12 @@
 <html>
 <style>
     table, td { border: black 1px solid; }
+    text {padding-right:7px;
+        padding-lert:7px;
+        font-size: 20px;
+    }
 </style>
 <script>
-
     var enrolledCouponDatas = ${enrolledCouponDatasJson};
     var unEnrolledCouponDatas = ${unEnrolledCouponDatasJson};
 </script>
@@ -12,8 +15,8 @@
 
 </head>
 <body>
-    <a href = "/owner/shopList">owner_mode</a>
-    <a href = "/logout">logout</a>
+    <a href = "/owner/shopList"><text class="menuButton">owner_mode</text></a>
+    <a href = "/logout"><text class="menuButton">logout</text></a>
     <hr>
     <h1>Welcome to "My coupon"</h1>
     <hr>

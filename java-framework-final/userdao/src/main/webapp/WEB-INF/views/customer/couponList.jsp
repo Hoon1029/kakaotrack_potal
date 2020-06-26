@@ -31,7 +31,6 @@
                 "<td> 상품명 </td>" +
                 "<td> 상품가격 </td>" +
                 "<td> 스탬프 </td>" +
-                "<td> 요청 개수 </td>" +
                 "<td> 스탬프 요청 </td>" +
                 "<td> 삭제하기 </td>" +
                 "</tr>");
@@ -43,8 +42,7 @@
                     "<td>"+enrolledCouponDatas[i].productName+"</td>" +
                     "<td>"+enrolledCouponDatas[i].productPrice+"</td>" +
                     "<td>"+enrolledCouponDatas[i].stampNum+"/"+enrolledCouponDatas[i].maxStampNum+"</td>" +
-                    "<td ><input id=\"stampRequestNum"+i+"\" type=\"text\" value=\"요청개수\"></td>" +
-                    "<td><input type=\"button\" value = \"스템프 요청하기 \" onClick=\"stampRequest("+i+");\"></td>" +
+                    "<td><input id=\"stampRequestNum"+i+"\" style=\"width:50px;\" type=\"text\" placeholder=\"개수\"><input type=\"button\" value = \"요청하기 \" onClick=\"stampRequest("+i+");\"></td>" +
                     "<td><input type=\"button\" value = \"삭제하기\" onClick=\"location.href=\'"+dropCouponUrl+"\'\"></td>" +
                     "</tr>";
                 document.write(value);

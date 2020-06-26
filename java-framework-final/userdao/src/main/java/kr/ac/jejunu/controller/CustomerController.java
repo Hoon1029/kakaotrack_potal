@@ -30,6 +30,7 @@ public class CustomerController {
     private final ObjectMapper objectMapper;
     private final ProductDao productDao;
     private final EnrollmentDao enrollmentDao;
+    private final StampRequestDao stampRequestDao;
 
     @RequestMapping(path = "/shopList")
     public ModelAndView index(HttpServletRequest request) throws JsonProcessingException {
@@ -145,7 +146,7 @@ public class CustomerController {
         Integer shopId = couponInforDao.get(couponInforId).getShopId();
         if(userManager.isOnLogin(request)) {
             User user = userManager.getUser(request);
-
+            stampRequestDao.insert(new StampRequest(couponInforId, user.getId(), stampNum));
         } else {
 
         }

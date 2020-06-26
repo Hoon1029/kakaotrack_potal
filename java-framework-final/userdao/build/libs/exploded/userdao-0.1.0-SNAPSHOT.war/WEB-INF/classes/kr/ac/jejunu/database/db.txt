@@ -1,9 +1,12 @@
-drop table shop;
-drop table user;
-drop table enroll;
-drop table couponInfor;
-drop table product;
-drop table coupon;
+SET foreign_key_checks = 0;
+drop table SHOP;
+drop table USER;
+drop table ENROLLMENT;
+drop table COUPONINFOR;
+drop table PRODUCT;
+drop table COUPON;
+drop table STAMPREQUEST
+SET foreign_key_checks = 1;
 
 create table SHOP(
 id int auto_increment,
@@ -15,7 +18,7 @@ locateY double NOT NULL,
 primary key (id)
 );
 
-insert into shop (ownerId, name, address, locateX, locateY)
+insert into SHOP (ownerId, name, address, locateX, locateY)
 values
 ("yh123", "맘스터치", "제주 제주시 제주대학로 102 OOO", 100.0, 200.0),
 ("yh123", "봄봄", "제주 제주시 제주대학로 102 OOO", 100.0, 200.0),
@@ -32,23 +35,23 @@ ownerFlag bool default false,
 primary key(id)
 );
 
-insert into user (id, password, name, ownerFlag)
+insert into USER (id, password, name, ownerFlag)
 values
 ("yh123", "1234", "허윤호", true),
 ("mh123", "1234", "한명훈", false);
 
-create table ENROLL(
-userId char(20) NOT NULL,
+create table ENROLLMENT(
 shopId int NOT NULL,
-primary key (userId, shopId),
-foreign key (userId) references USER (id) on delete cascade,
-foreign key (shopId) references SHOP (id) on delete cascade
+customerId char(20) NOT NULL,
+primary key (shopId, customerId),
+foreign key (shopId) references SHOP (id) on delete cascade,
+foreign key (customerId) references USER (id) on delete cascade
 );
 
-insert into ENROLL (userId, shopId)
+insert into ENROLLMENT (shopId, customerId)
 values
-("mh123", 1),
-("mh123", 2);
+(1, "mh123"),
+(2, "mh123");
 
 create table product(
 id int auto_increment,
@@ -60,7 +63,7 @@ primary key(id),
 foreign key (shopId) references SHOP (id) on delete cascade
 );
 
-insert into product (shopId, name, price)
+insert into PRODUCT (shopId, name, price)
 values
 (1, "싸이버거", 3000),
 (1, "명훈버거", 4500),
@@ -70,7 +73,7 @@ values
 (2, "망고스무디", 4000),
 (2, "아이스 아메리카노", 1500);
 
-create table couponInfor (
+create table COUPONINFOR (
 id int auto_increment,
 shopId int NOT NULL,
 name char(20) default "쿠폰",
@@ -83,7 +86,7 @@ foreign key (shopId) references SHOP (id) on delete cascade,
 foreign key (productId) references PRODUCT (id) on delete cascade
 );
 
-insert into couponInfor (shopId, productId)
+insert into COUPONINFOR (shopId, productId)
 values
 (1, 1),
 (1, 2),
@@ -92,19 +95,28 @@ values
 (2, 5),
 (2, 6);
 
-create table coupon (
+create table COUPON (
 couponInforId int NOT NULL,
-userId char(20) NOT NULL,
+customerId char(20) NOT NULL,
 num int default 0,
-primary key(couponInforId, userId),
+primary key(couponInforId, customerId),
 foreign key (couponInforId) references COUPONINFOR (id) on delete cascade,
-foreign key (userId) references USER (id) on delete cascade
+foreign key (customerId) references USER (id) on delete cascade
 );
 
-insert into coupon (couponInforId, userId)
+insert into COUPON (couponInforId, customerId)
 values
 (1, "mh123"),
 (2, "mh123"),
 (3, "mh123"),
 (5, "mh123"),
 (6, "mh123");
+
+create table STAMPREQUEST(
+couponInforId int NOT NULL,
+customerId char(20) NOT NULL,
+stampNum int NOT NULL,
+primary key (couponInforId, customerId),
+foreign key (couponInforId) references COUPONINFOR (id),
+foreign key (customerId) references USER (id)
+);

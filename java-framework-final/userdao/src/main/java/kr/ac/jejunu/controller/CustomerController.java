@@ -137,5 +137,21 @@ public class CustomerController {
         }
         return "redirect:/customer/couponList/"+String.valueOf(shopId);
     }
+
+    @RequestMapping("stampRequest/{couponInforId}/{stampNum}")
+    public String stampRequest(@PathVariable("couponInforId") Integer couponInforId,
+                               @PathVariable("stampNum") Integer stampNum,
+                               HttpServletRequest request){
+        Integer shopId = couponInforDao.get(couponInforId).getShopId();
+        if(userManager.isOnLogin(request)) {
+            User user = userManager.getUser(request);
+
+        } else {
+
+        }
+        return "redirect:/customer/couponList/"+String.valueOf(shopId);
+    }
+
+
 }
 

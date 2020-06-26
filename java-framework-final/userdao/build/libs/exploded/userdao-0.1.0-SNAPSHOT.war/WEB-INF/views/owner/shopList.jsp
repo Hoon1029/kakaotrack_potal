@@ -70,7 +70,7 @@
     </script>
     <details>
         <summary>Create Shop</summary>
-        <form action="/owner/createShop" method="post" enctype="multipart/form-data" >
+        <form action="/owner/createShop" method="post" enctype="multipart/form-data">
             <div>
                 <div>
                     <div><a>매장이름: </a><input type="text" name="name"/></div>

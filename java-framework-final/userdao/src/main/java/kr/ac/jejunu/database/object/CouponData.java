@@ -10,10 +10,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class CouponData {
-    String couponName;
-    String productName;
-    Integer productPrice;
-    Integer stampNum;
-    Integer maxStampNum;
-    Integer couponInforId;
+    private String couponName;
+    private String productName;
+    private Integer productPrice;
+    private Integer stampNum;
+    private Integer maxStampNum;
+    private Integer couponInforId;
 }

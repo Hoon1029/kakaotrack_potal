@@ -10,9 +10,9 @@ import lombok.NoArgsConstructor;
 @Builder
 @Data
 public class Product {
-    Integer id;
-    Integer shopId;
-    String name;
-    Integer price;
-    Boolean sellFlag;
+    private Integer id;
+    private Integer shopId;
+    private String name;
+    private Integer price;
+    private Boolean sellFlag;
 }

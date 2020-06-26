@@ -5,6 +5,7 @@ drop table ENROLLMENT;
 drop table COUPONINFOR;
 drop table PRODUCT;
 drop table COUPON;
+drop table STAMPREQUEST
 SET foreign_key_checks = 1;
 
 create table SHOP(
@@ -110,3 +111,12 @@ values
 (3, "mh123"),
 (5, "mh123"),
 (6, "mh123");
+
+create table STAMPREQUEST(
+couponInforId int NOT NULL,
+customerId char(20) NOT NULL,
+stampNum int NOT NULL,
+primary key (couponInforId, customerId),
+foreign key (couponInforId) references COUPONINFOR (id),
+foreign key (customerId) references USER (id)
+);

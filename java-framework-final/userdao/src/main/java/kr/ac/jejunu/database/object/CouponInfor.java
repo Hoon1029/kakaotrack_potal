@@ -10,11 +10,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class CouponInfor {
-    Integer id;
-    Integer shopId;
-    String name;
-    Integer maxStampNum;
-    Integer productId;
-    String backgoundImgId;
-    String stampImgId;
+    private Integer id;
+    private Integer shopId;
+    private String name;
+    private Integer maxStampNum;
+    private Integer productId;
+    private String backgoundImgId;
+    private String stampImgId;
 }

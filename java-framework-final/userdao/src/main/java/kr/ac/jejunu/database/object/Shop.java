@@ -10,10 +10,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class Shop {
-    Integer id;
-    String ownerId;
-    String name;
-    String address;
-    double locateX;
-    double locateY;
+    private Integer id;
+    private String ownerId;
+    private String name;
+    private String address;
+    private double locateX;
+    private double locateY;
 }

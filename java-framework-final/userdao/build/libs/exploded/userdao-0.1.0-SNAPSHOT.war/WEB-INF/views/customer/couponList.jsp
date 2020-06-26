@@ -31,6 +31,8 @@
                 "<td> 상품명 </td>" +
                 "<td> 상품가격 </td>" +
                 "<td> 스탬프 </td>" +
+                "<td> 요청 개수 </td>" +
+                "<td> 스탬프 요청 </td>" +
                 "<td> 삭제하기 </td>" +
                 "</tr>");
             for(var i=0 ; i<enrolledCouponDatas.length ; i++){
@@ -41,11 +43,23 @@
                     "<td>"+enrolledCouponDatas[i].productName+"</td>" +
                     "<td>"+enrolledCouponDatas[i].productPrice+"</td>" +
                     "<td>"+enrolledCouponDatas[i].stampNum+"/"+enrolledCouponDatas[i].maxStampNum+"</td>" +
+                    "<td ><input id=\"stampRequestNum"+i+"\" type=\"text\" value=\"요청개수\"></td>" +
+                    "<td><input type=\"button\" value = \"스템프 요청하기 \" onClick=\"stampRequest("+i+");\"></td>" +
                     "<td><input type=\"button\" value = \"삭제하기\" onClick=\"location.href=\'"+dropCouponUrl+"\'\"></td>" +
                     "</tr>";
                 document.write(value);
             }
             document.write("</table>");
+        }
+
+        function stampRequest(i){
+            var stampRequestUrl = "/customer/stampRequest/"+enrolledCouponDatas[i].couponInforId;
+            var stampNum = document.getElementById("stampRequestNum"+i).value;
+            alert(stampNum);
+
+            window.location = stampRequestUrl+"/"+stampNum;
+            // httpRequest.open("GET", stampRequestUrl+"/"+stampNum, true);
+            // httpRequest.send();
         }
 
     </script>

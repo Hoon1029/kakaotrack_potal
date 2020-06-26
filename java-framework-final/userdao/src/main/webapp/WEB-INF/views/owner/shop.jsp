@@ -38,6 +38,7 @@
     var products = ${productsJson};
     var couponInfors = ${couponInforsJson};
     var stampRequests = ${stampRequestsJson};
+    var stampRequestNames = ${stampRequestNamesJson};
 </script>
 <head>
 </head>
@@ -116,6 +117,7 @@
                     document.write("<table>" +
                         "<tr bgcolor=white align=center>" +
                         "<td> 번호 </td>" +
+                        "<td> 쿠폰ID </td>" +
                         "<td> 쿠폰명 </td>" +
                         "<td> 상품ID </td>" +
                         "<td> 스탬프 </td>" +
@@ -126,6 +128,7 @@
                         var deleteCouponInforUrl = "/owner/deleteCouponInfor/"+shopId+"/"+couponInfors[i].id;
                         var value = "<tr align=center>" +
                             "<td>"+(i+1)+"</td>" +
+                            "<td>"+couponInfors[i].id+"</td>" +
                             "<td>"+couponInfors[i].name+"</td>" +
                             "<td>"+couponInfors[i].productId+"</td>" +
                             "<td>"+couponInfors[i].maxStampNum+"</td>" +
@@ -170,6 +173,7 @@
                 }else{
                     document.write("<table>" +
                         "<tr bgcolor=white align=center>" +
+                        "<td> 번호 </td>" +
                         "<td> 쿠폰 ID </td>" +
                         "<td> 쿠폰 명 </td>" +
                         "<td> 요청자 ID </td>" +
@@ -183,6 +187,7 @@
                         var value = "<tr align=center onclick='modifyPage(i)'>" +
                             "<td>"+(i+1)+"</td>" +
                             "<td>"+stampRequests[i].couponInforId+"</td>" +
+                            "<td>"+stampRequestNames[i]+"</td>" +
                             "<td>"+stampRequests[i].customerId+"</td>" +
                             "<td>"+stampRequests[i].stampNum+"</td>" +
                             "<td><input type=\"button\" value = \"수락\" onClick=\"location.href=\'"+acceptRequestUrl+"\'\"></td>" +

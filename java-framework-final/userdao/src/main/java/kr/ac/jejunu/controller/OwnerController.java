@@ -62,11 +62,16 @@ public class OwnerController {
             ArrayList<StampRequest> temp = stampRequestDao.getAllById(couponInfors.get(i).getId());
             stampRequests.addAll(temp);
         }
+        ArrayList<String> couponNames = new ArrayList<String>();
+        for(int i=0 ; i<stampRequests.size() ; i++){
+            couponNames.add(couponInforDao.get(stampRequests.get(i).getCouponInforId()).getName());
+        }
         ModelAndView modelAndView = new ModelAndView("owner/shop");
         modelAndView.addObject("shopId", shopId);
         modelAndView.addObject("productsJson", objectMapper.writeValueAsString(products));
         modelAndView.addObject("couponInforsJson", objectMapper.writeValueAsString(couponInfors));
         modelAndView.addObject("stampRequestsJson", objectMapper.writeValueAsString(stampRequests));
+        modelAndView.addObject("stampRequestNamesJson", objectMapper.writeValueAsString(couponNames));
         return modelAndView;
     }
 
